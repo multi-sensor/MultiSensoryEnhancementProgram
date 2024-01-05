@@ -1,4 +1,4 @@
-# many_gamgak
+# multi_sensory_enhancement_program
 
 A new Flutter project.
 
