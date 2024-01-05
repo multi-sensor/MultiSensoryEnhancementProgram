@@ -6,6 +6,7 @@ import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_caro
 import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_main_content.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
-        body: CRMMainContent(), // <- 여기에 위젯 테스트할 것 넣으세요.
+        body: CRMTextField(iconName: Icons.search, hintText: "테마 검색"), // <- 여기에 위젯 테스트할 것 넣으세요.
         bottomNavigationBar: CRMBottomNavigationBar(),
         backgroundColor: Colors.white,
       ),
