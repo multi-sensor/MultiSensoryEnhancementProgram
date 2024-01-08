@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -6,6 +8,9 @@ import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_caro
 import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_main_content.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
+
+import 'app/view/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +27,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        // appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
-        body: CRMMainContent(), // <- 여기에 위젯 테스트할 것 넣으세요.
-        bottomNavigationBar: CRMBottomNavigationBar(),
+      home: const Scaffold(
+        appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
+        body: CRMText(textContent: '즐거운 방학', fontSize: 10, fontStyle: TextStyle(),
+      ),
+
+      bottomNavigationBar: CRMBottomNavigationBar(),
         backgroundColor: Colors.white,
       ),
     );
