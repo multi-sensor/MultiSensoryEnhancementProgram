@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
+<<<<<<< HEAD
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_button.dart';
-
+=======
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_child_profile_button.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
+>>>>>>> 6aef6bb0832514d4496d832a5c557c9af2d7e734
 
 void main() {
   runApp(const MyApp());
