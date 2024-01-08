@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_fontweight.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 class CRMTextField extends StatelessWidget {
   final IconData iconName;
@@ -48,13 +45,13 @@ class CRMTextField extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: hintText,
-                  hintStyle: inputHintTextStyle,
+                  hintStyle: AppTextThemes.inputHintTextStyle,
                   contentPadding: EdgeInsets.fromLTRB(16, 5, 16, 5),
                   border: InputBorder.none,
                   fillColor: AppColors.white,
                   filled: true,
                 ),
-                style: inputContentTextStyle,
+                style: AppTextThemes.inputContentTextStyle,
                 textInputAction: action,
                 keyboardType: inputType,
                 obscureText: needHide,
