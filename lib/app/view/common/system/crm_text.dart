@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 
 class CRMText extends StatelessWidget {
   final String textContent;
