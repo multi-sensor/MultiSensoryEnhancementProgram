@@ -14,41 +14,51 @@ class CRMTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: AppColors.gray300),
-      width: 340,
-      height: 60,
+      padding: EdgeInsets.symmetric(horizontal: 0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: AppColors.gray500),
+        borderRadius: BorderRadius.circular(5), // Adjust for desired rounding
+      ),
+      width: 400,
+      height: 50,
       child: Row(
-        children: [
-          Icon(iconName, color: AppColors.gray500),
-          SizedBox(
-            width: 300,
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: AppColors.white,
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.gray300,
-                    width: 2,
-                  ),
-                ),
-                focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.black,
-                    width: 4,
-                  ),
-                ),
-                hintText: hintText,
-                hintStyle: inputHintTextStyle,
-                contentPadding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+        children: <Widget>[
+          Container(
+            height: 50,
+            width: 50,// Adjust the padding for icon size
+            decoration: BoxDecoration(
+              color: AppColors.gray300, // Background color for the icon
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                bottomLeft: Radius.circular(5),
+              ), // Makes it circular
+            ),
+            child: Align(alignment: Alignment.center, child: Icon(iconName, color: AppColors.gray500, size: 35)), // Icon color
+          ),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(5),
+                bottomRight: Radius.circular(5),
               ),
-              style: inputContentTextStyle,
-              textInputAction: action,
-              keyboardType: inputType,
-              obscureText: needHide ? true : false,
-              autofocus: false,
-              onSubmitted: keyboardSubmit,
-              onChanged: onChanged,
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  hintStyle: AppTextThemes.inputHintTextStyle,
+                  contentPadding: EdgeInsets.fromLTRB(16, 5, 16, 5),
+                  border: InputBorder.none,
+                  fillColor: AppColors.white,
+                  filled: true,
+                ),
+                style: AppTextThemes.inputContentTextStyle,
+                textInputAction: action,
+                keyboardType: inputType,
+                obscureText: needHide,
+                autofocus: false,
+                onSubmitted: keyboardSubmit,
+                onChanged: onChanged,
+              ),
             ),
           ),
         ],
