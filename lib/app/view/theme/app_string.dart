@@ -44,5 +44,5 @@ abstract class AppString {
   static const setting = "images/icon_setting.svg";
   static final profile =
   List.generate(8, (index) => "images/profile_$index.png");
-  static final baseProfile = "images/profile_0.png";
+  static const baseProfile = "images/profile_0.png";
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class CRMAppBar extends StatelessWidget implements PreferredSizeWidget{
   const CRMAppBar({super.key, required this.title});
@@ -12,12 +10,12 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
       backgroundColor: Colors.white,
       foregroundColor: Colors.deepOrange,
-      title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-      leading: IconButton(icon: Icon(Icons.circle, color: Colors.deepOrange), onPressed: null),
-      actions: [
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+      leading: const IconButton(icon: Icon(Icons.circle, color: Colors.deepOrange), onPressed: null),
+      actions: const [
         IconButton(icon: Icon(Icons.menu, color: Colors.black54), onPressed: null)
       ],
-      shape: Border(
+      shape: const Border(
         bottom: BorderSide(
           color: Colors.black12,
           width: 1,
