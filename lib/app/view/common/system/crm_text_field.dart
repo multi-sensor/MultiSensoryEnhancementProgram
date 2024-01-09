@@ -14,7 +14,7 @@ class CRMTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: AppColors.gray500),
@@ -27,7 +27,7 @@ class CRMTextField extends StatelessWidget {
           Container(
             height: 50,
             width: 50,// Adjust the padding for icon size
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.gray300, // Background color for the icon
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(5),
@@ -38,7 +38,7 @@ class CRMTextField extends StatelessWidget {
           ),
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(5),
                 bottomRight: Radius.circular(5),
               ),
@@ -46,7 +46,7 @@ class CRMTextField extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: hintText,
                   hintStyle: AppTextThemes.inputHintTextStyle,
-                  contentPadding: EdgeInsets.fromLTRB(16, 5, 16, 5),
+                  contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
                   border: InputBorder.none,
                   fillColor: AppColors.white,
                   filled: true,
