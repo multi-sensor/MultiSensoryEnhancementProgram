@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_fontweight.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 
 class CRMChildProfileButton extends StatelessWidget {
   final String childName;

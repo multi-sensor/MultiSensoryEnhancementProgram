@@ -25,4 +25,9 @@ abstract class AppTextThemes {
     fontWeight: AppFontWeights.bold,
   );
 
+  static const TextStyle sliderTitleStyle = TextStyle(
+    color: AppColors.orangeOrigin,
+    fontWeight: AppFontWeights.bold,
+  );
+
 }
