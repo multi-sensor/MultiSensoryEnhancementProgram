@@ -44,6 +44,4 @@ abstract class AppTextThemes {
     color: AppColors.orangeOrigin,
     fontWeight: AppFontWeights.bold,
   );
-=======
->>>>>>> 7a0ff0c95fee4b8ffa180bd923207228f86da97b
 }
