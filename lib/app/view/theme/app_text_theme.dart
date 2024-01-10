@@ -25,9 +25,23 @@ abstract class AppTextThemes {
     fontWeight: AppFontWeights.bold,
   );
 
-  static const TextStyle sliderTitleStyle = TextStyle(
+  static const TextStyle textTitleStyle = TextStyle(
     color: AppColors.orangeOrigin,
     fontWeight: AppFontWeights.bold,
   );
 
+  static const TextStyle sliderTitleStyle = TextStyle(
+  color: AppColors.orangeOrigin,
+  fontWeight: AppFontWeights.bold,
+  );
+
+  static const TextStyle textSemiTitleStyle = TextStyle(
+    color: AppColors.black,
+    fontWeight: AppFontWeights.bold,
+  );
+
+  static const TextStyle textContentStyle = TextStyle(
+    color: AppColors.orangeOrigin,
+    fontWeight: AppFontWeights.bold,
+  );
 }

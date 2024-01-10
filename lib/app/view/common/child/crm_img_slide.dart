@@ -4,15 +4,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 
-class CRMImgSlide0 extends StatelessWidget {
-  const CRMImgSlide0({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const CRMImgSlide();
-  }
-}
-
 class CRMImgSlide extends StatefulWidget {
   const CRMImgSlide({Key? key}) : super(key: key);
 
@@ -24,12 +15,11 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
   List<String> imageList = [
-    "images/01/process/1.png",
-    "images/01/process/2.png",
-    "images/01/process/3.png",
-    "images/01/process/1.png",
-    "images/01/process/2.png",
-    "images/01/process/3.png",
+    "images/공룡/1/공룡_1-1.png",
+    "images/공룡/1/공룡_1-2.png",
+    "images/공룡/1/공룡_1-3.png",
+    "images/공룡/1/공룡_1-4.png",
+    "images/공룡/1/공룡_1-완성.png",
     // Add more images as needed
   ];
 
@@ -43,7 +33,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
               IconButton(icon:const Icon(Icons.arrow_left), onPressed:decrementIdx, iconSize: 100, color: AppColors.gray500),
 
               Container(
-                height: 389,
+                height: MediaQuery.of(context).size.height*0.5,
                 width: MediaQuery.of(context).size.width*0.5,
                 decoration: BoxDecoration(
                   color: AppColors.orangeBackground,
@@ -83,18 +73,9 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
             (imgLink) {
           return Builder(
             builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30.0),
-                    child: Image(
-                      fit: BoxFit.fitHeight,
-                      image: AssetImage(imgLink),
-                    ),
-                  ),
-                ),
+              return Image(
+                fit: BoxFit.fitWidth,
+                image: AssetImage(imgLink),
               );
             },
           );
@@ -102,7 +83,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
       ).toList(),
       options: CarouselOptions(
         enableInfiniteScroll: false,
-        height: 300,
+        height: MediaQuery.of(context).size.height*0.3,
         viewportFraction: 1.0,
         autoPlay: false,
         onPageChanged: (index, reason) {
