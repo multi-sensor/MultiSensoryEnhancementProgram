@@ -3,7 +3,7 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_tex
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
-
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 class CRMImgSlide extends StatefulWidget {
   const CRMImgSlide({Key? key}) : super(key: key);
 

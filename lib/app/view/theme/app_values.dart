@@ -18,4 +18,21 @@ abstract class AppValues {
   // static const int defaultPageNumber = 1;
   // static const int defaultDebounceTimeInMilliSeconds = 1000;
   // static const int defaultThrottleTimeInMilliSeconds = 500;
+  static const  Map<String, dynamic> fileData = {
+    "category": ["공룡", "기차"],
+    "level": ["1", "1.5", "2", "2.5", "3", "3.5"],
+    "공룡": {
+      "1": {
+        "imageNumber": 4,
+        "hints": [],
+        "name": "티라노사우루스"
+      },
+      "3": {
+        "imageNumber": 12,
+        "hints": ["공룡_3-7-1.png", "공룡_3-7-2.png", "공룡_3-8-1.png", "공룡_3-9-1.png"],
+        "name": "크리모사우루스"
+      }
+    }
+  };
+
 }
