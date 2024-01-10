@@ -20,9 +20,9 @@ class CRMInfo extends StatelessWidget {
               fontSize: 20,
               fontStyle: AppTextThemes.textSemiTitleStyle
             ),
-            IconButton(icon: Image.asset('images/${this.level}/answer.png' , width: MediaQuery.of(context).size.width * 0.2, height: MediaQuery.of(context).size.width * 0.15), onPressed: (){}),
+            IconButton(icon: Image.asset('images/${this.category}/${this.level}/${this.category}_${this.level}-완성.png' , width: MediaQuery.of(context).size.width * 0.2, height: MediaQuery.of(context).size.width * 0.15), onPressed: (){}),
             const CRMText(
-                textContent: '크로노 사우루스',
+                textContent: '공룡1',
                 fontSize: 20,
                 fontStyle: AppTextThemes.textContentStyle
             ),

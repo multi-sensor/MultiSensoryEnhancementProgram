@@ -70,10 +70,7 @@ flutter:
   assets:
     - images/01/
     - images/01/process/
-<<<<<<< HEAD
-=======
-
->>>>>>> 7a0ff0c95fee4b8ffa180bd923207228f86da97b
+    - images/공룡/1/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

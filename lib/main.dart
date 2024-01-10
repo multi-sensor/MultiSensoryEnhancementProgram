@@ -23,23 +23,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const Scaffold(
         appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
-<<<<<<< HEAD
         body: Row(
           children: [
-            CRMInfo(category:'1', level:'01', imageName: '크로노 사우루스'),
+            CRMInfo(category:'공룡', level:'1', imageName: '공룡_1'),
+            CRMImgSlide() ,
           ],
         ),
-=======
-        body: CRMImgSlide0() ,
 
-        // Center(
-        //   child: FractionallySizedBox(
-        //     //widthFactor: 0.75,
-        //     //heightFactor: 0.75,
-        //     child: CRMImgSlide0(), // Assuming CRMImgSlide0 is a valid widget
-        //   ),
-        // ),
->>>>>>> 7a0ff0c95fee4b8ffa180bd923207228f86da97b
         bottomNavigationBar: CRMBottomNavigationBar(),
         backgroundColor: Colors.white,
       ),
