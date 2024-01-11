@@ -26,3 +26,18 @@ BoxShadow odosShadow = BoxShadow(
 );
 
  */
+
+final ThemeData appThemeData = ThemeData(
+  primaryColor: AppColors.primaryColor,
+  highlightColor: Colors.transparent,
+  fontFamily: 'SUITE',
+  splashColor: Colors.transparent,
+  hoverColor: Colors.transparent,
+  textTheme: const TextTheme(
+    displayLarge: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: AppColors.black,
+    ),
+  ),
+);
