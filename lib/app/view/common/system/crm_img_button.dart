@@ -97,6 +97,7 @@ class CRMImgButton extends StatelessWidget {
                           child: Text(
                             popupButtonData[index]['title'] ?? '', // 리스트에서 제목 가져오기
                             style: TextStyle(
+                              fontFamily: 'CookieRun',
                               fontSize: 16,
                               color: Colors.black,
                             ),
@@ -127,6 +128,7 @@ class CRMImgButton extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
+                  fontFamily: 'CookieRun',
                   color: Colors.white,
                   fontSize: 20,
               ),
