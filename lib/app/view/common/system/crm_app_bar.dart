@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_guide.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CRMAppBar({Key? key, required this.title});
@@ -21,12 +23,13 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin), //사용 가이드 버튼
+          icon: Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin),
+          //사용 가이드 버튼
           onPressed: () {
-            // Add functionality for the info icon here
-            print(' ');
+            guide(context);
           },
-          color: AppColors.blueOrigin, //물결색상 지정
+          color: AppColors.blueOrigin,
+          //물결색상 지정
           iconSize: 35,
         ),
       ],

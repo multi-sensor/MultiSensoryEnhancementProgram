@@ -98,8 +98,8 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
       options: CarouselOptions(
         enableInfiniteScroll: false,
         height: MediaQuery.of(context).size.height*0.5,
-        viewportFraction: 1.0,
-        autoPlay: false,
+        viewportFraction: 1.0, //한번에 보이는 이미지 개수
+        autoPlay: false, //자동으로 넘어가기 해제
         onPageChanged: (index, reason) {
           setState(() {
             _current = index;
