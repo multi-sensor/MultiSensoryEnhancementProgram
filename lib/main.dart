@@ -42,14 +42,6 @@ class _MyAppState extends State<MyApp> {
           children: [
             //CRMInfo(category:2, level:3),
             //CRMImgSlide(category:2, level:3) ,
-            CupertinoSwitch(
-              value: isSwitched,
-              onChanged: (value) {
-                setState(() {
-                  isSwitched = value; // 스위치 상태 업데이트
-                });
-              },
-            ),
             Expanded(
               child: isSwitched
                   ? buildLevelButtonPage() // 스위치R :  'crm_img_button'
