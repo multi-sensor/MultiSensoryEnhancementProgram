@@ -2,24 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-final List<Map<String, String>> levelButtonData = [
-  {'title' : 'LEVEL 1'},
-  {'title' : 'LEVEL 1+'},
-  {'title' : 'LEVEL 2'},
-  {'title' : 'LEVEL 2+'},
-  {'title' : 'LEVEL 3'},
-  {'title' : 'LEVEL 3+'},
-  // 데이터 추가
-];
-
-List<Widget> createlevelButtonData() {
-  return levelButtonData.map((data) {
-    return CRMLevelButton(
-      title: data['title']!
-    );
-  }).toList();
-}
-
 class CRMLevelButton extends StatelessWidget {
   final String title;
 
@@ -57,27 +39,6 @@ class CRMLevelButton extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget buildLevelButtonPage() {
-  return Scrollbar(
-    child: Container(
-      height: 800, // 고정 높이
-      width: 800, // 고정 너비
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-          childAspectRatio: 1,
-        ),
-        itemCount: levelButtonData.length, // 버튼 데이터의 길이
-        itemBuilder: (context, index) {
-          return createlevelButtonData()[index];
-        },
-      ),
-    ),
-  );
 }
 
 class NewPage extends StatelessWidget {
