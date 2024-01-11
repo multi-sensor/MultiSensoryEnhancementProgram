@@ -30,5 +30,4 @@ class CRMBottomNavigationBar extends StatelessWidget {
       backgroundColor: Colors.white,
     );
   }
-
 }
