@@ -30,6 +30,7 @@ environment:
 dependencies:
   #버튼 디자인 위해 추가
   getwidget: ^2.0.4
+  percent_indicator: ^4.2.3
 
   flutter:
     sdk: flutter

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_carousel_slider.dart';
@@ -54,16 +55,8 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            // CRMInfo(category:2, level:3),
-            // CRMImgSlide(category:2, level:3) ,
-            CupertinoSwitch(
-              value: isSwitched,
-              onChanged: (value) {
-                setState(() {
-                  isSwitched = value; // 스위치 상태 업데이트
-                });
-              },
-            ),
+            //CRMInfo(category:2, level:3),
+            //CRMImgSlide(category:2, level:3) ,
             Expanded(
               child: isSwitched
                   ? buildLevelButtonPage() // 스위치R :  'crm_img_button'
