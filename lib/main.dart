@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
         body: Row(
           children: [
-            CRMInfo(category:'공룡', level:'1', imageName: '공룡_1'),
-            CRMImgSlide() ,
+            CRMInfo(category:2, level:3),
+            CRMImgSlide(category:2, level:3) ,
           ],
         ),
 

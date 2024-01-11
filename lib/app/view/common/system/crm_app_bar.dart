@@ -11,7 +11,7 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget{
       backgroundColor: Colors.white,
       foregroundColor: Colors.deepOrange,
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-      leading: const IconButton(icon: Icon(Icons.circle, color: Colors.deepOrange), onPressed: null),
+      leading: const IconButton(icon: Icon(Icons.home_filled, color: Colors.deepOrange), onPressed: null),
       actions: const [
         IconButton(icon: Icon(Icons.menu, color: Colors.black54), onPressed: null)
       ],

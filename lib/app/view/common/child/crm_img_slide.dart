@@ -4,24 +4,45 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 class CRMImgSlide extends StatefulWidget {
-  const CRMImgSlide({Key? key}) : super(key: key);
-
+  final int category;
+  final int level;
+  const CRMImgSlide({Key? key, required this.category, required this.level}) : super(key: key);
   @override
   State<CRMImgSlide> createState() => _CRMImgSlideState();
 }
 
 class _CRMImgSlideState extends State<CRMImgSlide> {
   int _current = 0;
+  int _currentHintIdx = 0;
+  late List<String> _currentHint;
+  late String categoryName;
+  late String levelName;
+  late String finishedImage;
+  late String imageName;
+  late List<String> hintList;
+  late List<String> fileList;
   final CarouselController _controller = CarouselController();
-  List<String> imageList = [
-    "images/공룡/1/공룡_1-1.png",
-    "images/공룡/1/공룡_1-2.png",
-    "images/공룡/1/공룡_1-3.png",
-    "images/공룡/1/공룡_1-4.png",
-    "images/공룡/1/공룡_1-완성.png",
-    // Add more images as needed
-  ];
+  final CarouselController _hintController = CarouselController();
+  late List<String> imageList;
+  final Color backgroundColor = AppColors.orangeBackground;
+  @override
+  void initState() {
+    super.initState();
+    categoryName = AppValues.fileData['category'][widget.category];
+    levelName = AppValues.fileData['level'][widget.level];
+    finishedImage = 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_완성.png';
+    imageName = AppValues.fileData[this.categoryName][this.levelName]['name'];
+    hintList = AppValues.fileData[this.categoryName][this.levelName]['hints'];
+    imageList = [for (var i = 1; i <= AppValues.fileData[this.categoryName][this.levelName]['imageNumber']; i++) 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_$i.png'];
+    imageList.add('images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_완성.png');
+    fileList = [for (var i = 1; i <= AppValues.fileData[this.categoryName][this.levelName]['imageNumber']; i++) '${this.categoryName}_${this.levelName}_$i'];
+    fileList.add('${this.categoryName}_${this.levelName}_완성');
+
+    setCurrentHint();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +52,29 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(icon:const Icon(Icons.arrow_left), onPressed:decrementIdx, iconSize: 100, color: AppColors.gray500),
-
               Container(
-                height: MediaQuery.of(context).size.height*0.5,
+                height: MediaQuery.of(context).size.height*0.7,
                 width: MediaQuery.of(context).size.width*0.5,
                 decoration: BoxDecoration(
-                  color: AppColors.orangeBackground,
+                  color: this.backgroundColor,
                   borderRadius: BorderRadius.circular(30)
                 ),
                 padding: const EdgeInsets.all(30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(alignment: Alignment.centerLeft, child: CRMText(textContent: 'Step ${this._current + 1}', fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,)),
-                    Stack(
-                      children: [
-                        sliderWidget(context),
-                      ],
-                    ),
+                    guideBar(),
+                    Expanded(child: sliderWidget(context))
                   ],
                 ),
               ),
-
-
               IconButton(icon:const Icon(Icons.arrow_right), onPressed:incrementIdx, iconSize: 100, color: AppColors.gray500)
             ],
           ),
-          // Move the progress bar below the box
+          SizedBox(height:10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [for (var i = 0; i < imageList.length;i++) IconButton(icon:Icon(Icons.horizontal_rule), onPressed:() => setIdx(i), iconSize: 50, color: i == this._current? AppColors.orangeOrigin : AppColors.gray200)].toList()
+            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == this._current? AppColors.orangeOrigin : AppColors.gray500, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
           )
         ],
       );
@@ -73,9 +87,9 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
             (imgLink) {
           return Builder(
             builder: (context) {
-              return Image(
-                fit: BoxFit.fitWidth,
-                image: AssetImage(imgLink),
+              return PhotoView(
+                imageProvider: AssetImage(imgLink),
+                backgroundDecoration: BoxDecoration(color: this.backgroundColor),
               );
             },
           );
@@ -83,51 +97,85 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
       ).toList(),
       options: CarouselOptions(
         enableInfiniteScroll: false,
-        height: MediaQuery.of(context).size.height*0.3,
+        height: MediaQuery.of(context).size.height*0.5,
         viewportFraction: 1.0,
         autoPlay: false,
         onPageChanged: (index, reason) {
           setState(() {
             _current = index;
+            setCurrentHint();
           });
         },
       ),
     );
   }
 
-  Widget sliderIndicator() {
-    return Column(
-      children: [
-        SizedBox(height: 8),
-        Container(
-          height: 12,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: imageList.asMap().entries.map((entry) {
-              final indicatorWidth = MediaQuery.of(context).size.width * 0.5 / (imageList.length + 4);
-              return GestureDetector(
-                onTap: () => _controller.animateToPage(entry.key),
-                child: Container(
-                  width: indicatorWidth,
-                  height: 10,
-                  margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: Colors.redAccent.withOpacity(_current == entry.key ? 0.9 : 0.4),
-                  ),
-                ),
+  Widget guideBar(){
+
+    return _currentHint.length==0?
+    Align(alignment: Alignment.centerLeft, child: CRMText(textContent: this._current != imageList.length -1? 'Step ${this._current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,)):
+    Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:[
+          CRMText(textContent: this._current != imageList.length -1? 'Step ${this._current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+          TextButton(
+            style: TextButton.styleFrom(minimumSize: Size.zero),
+            child: CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
+            onPressed: (){
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+                    content: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: CarouselSlider(
+                        carouselController: _hintController,
+                        items: _currentHint.map(
+                              (imgLink) {
+                            return Builder(
+                              builder: (context) {
+                                return PhotoView(
+                                  imageProvider: AssetImage(imgLink),
+                                  backgroundDecoration: BoxDecoration(color: this.backgroundColor),
+                                );
+                              },
+                            );
+                          },
+                        ).toList(),
+                        options: CarouselOptions(
+                          enableInfiniteScroll: false,
+                          height: MediaQuery.of(context).size.height*0.5,
+                          viewportFraction: 1.0,
+                          autoPlay: false,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _currentHintIdx = index;
+                            });
+                          },
+                        ),
+                      )
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: CRMText(textContent: AppString.str_close, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Dialog 닫기
+                        },
+                      ),
+                    ],
+                  );
+                },
               );
-            }).toList(),
+            }
           ),
-        ),
-        SizedBox(height: 8),
-        Text(
-          '${_current + 1}/${imageList.length}',
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-      ],
+        ]
     );
+
   }
+
+
   void incrementIdx(){
 
     setState((){
@@ -135,6 +183,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
         _controller.jumpToPage(_current+1);
       }
     });
+    setCurrentHint();
   }
 
   void decrementIdx(){
@@ -143,11 +192,23 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
         _controller.jumpToPage(_current-1);
       }
     });
+    setCurrentHint();
   }
 
   void setIdx(idx){
     setState((){
       _controller.jumpToPage(idx);
+    });
+    setCurrentHint();
+  }
+
+  void setCurrentHint(){
+    setState((){
+      _currentHint = hintList.where((hint) {
+        return hint.startsWith(fileList[_current]);
+      }).map((hint) {
+        return 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/' + hint;
+      }).toList();
     });
   }
 }
