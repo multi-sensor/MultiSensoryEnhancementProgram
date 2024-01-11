@@ -47,6 +47,7 @@ class CRMLevelButton extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
+                fontFamily: 'CookieRun',
                 color: Colors.white,
                 fontSize: 20,
               ),

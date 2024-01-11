@@ -11,8 +11,22 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_level_button.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img_button.dart';
+
+import 'package:multi_sensory_enhancement_program/app/view/main_page/main_page.dart';
+import 'package:multi_sensory_enhancement_program/app/view/main_page/category_page.dart';
+import 'package:multi_sensory_enhancement_program/app/view/child/contents_page.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    title: '다감각 향상 프로그램',
+    debugShowCheckedModeBanner: false,
+    initialRoute: '/main',
+    routes: {
+      '/main': (context) => MainPage(),
+      '/contents': (context) => ContentsPage(),
+      '/category': (context) => CategoryPage(),
+    }
+  ));
 }
 
 class MyApp extends StatefulWidget {

@@ -15,8 +15,7 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(Icons.house, color: AppColors.redOrigin), //홈으로 버튼
         onPressed: () {
-          // Add functionality for the leading icon (house icon) here
-          print(' ');
+          Navigator.pushReplacementNamed(context, '/main');
         },
         iconSize: 35,
       ),
