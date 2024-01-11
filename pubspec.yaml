@@ -72,12 +72,6 @@ flutter:
     - images/01/
     - images/pictograms/
     - images/01/process/
-    - images/공룡/1/
-    - images/공룡/1.5/
-    - images/공룡/2/
-    - images/공룡/2.5/
-    - images/공룡/3/
-    - images/공룡/3.5/
     - images/가전제품만들기/가전제품만들기_Lv.1/
     - images/가전제품만들기/가전제품만들기_Lv.1+/
     - images/가전제품만들기/가전제품만들기_Lv.2/
@@ -95,25 +89,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: CookieRun
+      fonts:
+        - asset: fonts/CookieRun_Bold.ttf
+
+    - family: Maplestory
+      fonts:
+        - asset: fonts/Maplestory_Light.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
-  fonts:
-    - asset: fonts/CookieRun_Bold.ttf
-      weight: 700
-
-    - asset: fonts/Maplestory_Light.ttf
-      weight: 700
-
