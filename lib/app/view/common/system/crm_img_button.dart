@@ -62,6 +62,8 @@ class CRMImgButton extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(30),
             height: 450, width: 500,
+            color: const Color(0xfffad993),
+            //color: const Color(0xfff6f1ed),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

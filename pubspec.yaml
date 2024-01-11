@@ -97,3 +97,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+    - asset: fonts/CookieRun_Bold.ttf
+      weight: 700
+
+    - asset: fonts/Maplestory_Light.ttf
+      weight: 700
+
