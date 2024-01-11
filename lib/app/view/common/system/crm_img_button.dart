@@ -1,41 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-final List<Map<String, String>> imgButtonData = [
-  {'title': '기차 만들기','imagePath': 'images/pictograms/Picto_train.png'},
-  {'title': '집 만들기','imagePath': 'images/pictograms/Picto_home.png'},
-  {'title': '악기 만들기','imagePath': 'images/pictograms/Picto_instrument.png'},
-  {'title': '가전제품 만들기','imagePath': 'images/pictograms/Picto_HomeAppliance.png'},
-  {'title': '공룡 만들기','imagePath': 'images/pictograms/Picto_dinosaur.png'},
-  {'title': '곤충 만들기','imagePath': 'images/pictograms/Picto_train.png'},
-  // 데이터 추가
-];
-
-final List<Map<String, String>> popupButtonData = [
-  {'title': 'Level 1'},
-  {'title': 'Level 1+'},
-  {'title': 'Level 2'},
-  {'title': 'Level 2+'},
-  {'title': 'Level 3'},
-  {'title': 'Level 3+'},
-];
-
-List<Widget> createimgButtonData() {
-  return imgButtonData.map((data) {
-    return CRMImgButton(
-      title: data['title']!,
-      imagePath: data['imagePath']!,
-    );
-  }).toList();
-}
-
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 
 class CRMImgButton extends StatelessWidget {
   final String title;
   final String imagePath;
+  final int imageIdx;
 
-  const CRMImgButton({Key? key, required this.title, required this.imagePath})
+  const CRMImgButton({Key? key, required this.title, required this.imagePath, required this.imageIdx})
       : super(key: key);
 
   @override
@@ -85,7 +58,7 @@ class CRMImgButton extends StatelessWidget {
                       crossAxisCount: 2,
                       childAspectRatio: 2.0,
                     ),
-                    itemCount: imgButtonData.length, // 리스트의 길이를 사용
+                    itemCount: this.title.length, // 리스트의 길이를 사용
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.all(10),
@@ -95,7 +68,7 @@ class CRMImgButton extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            popupButtonData[index]['title'] ?? '', // 리스트에서 제목 가져오기
+                            AppValues.fileData['levelTitle'][index] ?? '', // 리스트에서 제목 가져오기
                             style: TextStyle(
                               fontFamily: 'CookieRun',
                               fontSize: 16,
@@ -148,23 +121,3 @@ class CRMImgButton extends StatelessWidget {
   }
 }
 
-Widget buildImgButtonPage() {
-  return Scrollbar(
-    child: Container(
-      height: 800, // 고정 높이
-      width: 800, // 고정 너비
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-          childAspectRatio: 1,
-        ),
-        itemCount: imgButtonData.length,
-        itemBuilder: (context, index) {
-          return createimgButtonData()[index];
-        },
-      ),
-    ),
-  );
-}
