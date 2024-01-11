@@ -6,23 +6,45 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage>{
+  bool isSwitched = false;
+  void toggleSwitch(bool value) {
+    setState(() {
+      isSwitched = value;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CRMAppBar(title: 'CREAMO'),
       body: Container(
+        alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 10),
             Image.asset('images/creamo_logo.png', height: 150, width: 200),
-            SizedBox(height: 10),
-            CRMTextField(iconName: Icons.search, hintText: AppString.str_themeSearch),
+            if(!isSwitched) ...[
+              SizedBox(height: 10),
+              CRMTextField(
+                iconName: Icons.search,
+                hintText: AppString.str_themeSearch,
+              ),
+            ],
             SizedBox(height: 5),
-            Expanded(child: SwitchWidget())
-          ]
+            Expanded(
+                child: SwitchWidget(
+                  isSwitched: isSwitched, // Pass state down
+                  onToggle: toggleSwitch, // Pass callback
+                )
+            ),
+          ],
         ),
       ),
     );
@@ -30,35 +52,29 @@ class MainPage extends StatelessWidget {
 }
 
 class SwitchWidget extends StatefulWidget {
-  const SwitchWidget({super.key});
+  final bool isSwitched;
+  final Function(bool) onToggle;
+
+  const SwitchWidget({super.key, required this.isSwitched, required this.onToggle});
 
   @override
   _SwitchWidgetState createState() => _SwitchWidgetState();
 }
 
 class _SwitchWidgetState extends State<SwitchWidget> {
-  // 스위치 상태를 관리하기 위한 변수
-  bool isSwitched = false; // 기본적으로 왼쪽에 위치하여 'crm_button'이 보여집니다.
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        // CRMInfo(category:2, level:3),
-        // CRMImgSlide(category:2, level:3) ,
         CupertinoSwitch(
-          value: isSwitched,
-          onChanged: (value) {
-            setState(() {
-              isSwitched = value; // 스위치 상태 업데이트
-            });
-          },
+          value: widget.isSwitched,
+          onChanged: widget.onToggle,
         ),
         Expanded(
-          child: isSwitched
-              ? buildLevelButtonPage() // 스위치R :  'crm_img_button'
-              : buildImgButtonPage(), // 스위치L : 'crm_level_button'
+          child: widget.isSwitched
+              ? buildLevelButtonPage()
+              : buildImgButtonPage(),
         ),
       ],
     );
@@ -93,11 +109,11 @@ Widget buildLevelButtonPage() {
 }
 
 Widget createImgButtonData(index) {
-       return CRMImgButton(
-          title: AppValues.fileData['categoryTitle'][index].toString(),
-          imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
-          imageIdx: index
-        );
+  return CRMImgButton(
+    title: AppValues.fileData['categoryTitle'][index].toString(),
+    imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
+    imageIdx: index
+  );
 }
 
 Widget buildImgButtonPage() {

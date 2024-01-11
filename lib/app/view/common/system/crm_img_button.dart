@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
 
 class CRMImgButton extends StatelessWidget {
   final String title;
@@ -13,19 +15,6 @@ class CRMImgButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget imageWidget;
-
-    // 악기와 가전제품 이미지에 대해 특별한 크기 제한을 적용
-    if (imagePath == 'images/pictograms/Picto_instrument.png' ||
-        imagePath == 'images/pictograms/Picto_HomeAppliance.png') {
-      imageWidget = SizedBox(
-        width: 800,
-        height: 800,
-        child: Image.asset(imagePath),
-      );
-    } else {
-      imageWidget = Image.asset(imagePath);
-    }
 
     return GestureDetector(
       onTap: () => showDialog(
@@ -58,7 +47,7 @@ class CRMImgButton extends StatelessWidget {
                       crossAxisCount: 2,
                       childAspectRatio: 2.0,
                     ),
-                    itemCount: this.title.length, // 리스트의 길이를 사용
+                    itemCount: AppValues.fileData['levelTitle'].length, // 리스트의 길이를 사용
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.all(10),
@@ -67,13 +56,10 @@ class CRMImgButton extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
-                          child: Text(
-                            AppValues.fileData['levelTitle'][index] ?? '', // 리스트에서 제목 가져오기
-                            style: TextStyle(
-                              fontFamily: 'CookieRun',
-                              fontSize: 16,
-                              color: Colors.black,
-                            ),
+                          child: CRMText(
+                            textContent: AppValues.fileData['levelTitle'][index] ?? '',
+                            fontSize: 16,// 리스트에서 제목 가져오기
+                            fontStyle: AppTextThemes.cookieRunStyle
                           ),
                         ),
                       );
@@ -88,7 +74,7 @@ class CRMImgButton extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1, // 정사각형
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: const Color(0xFFFFA147),
             borderRadius: BorderRadius.circular(5),
@@ -98,13 +84,10 @@ class CRMImgButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center, // 가로축 중앙에 정렬
 
               children: <Widget>[
-              Text(
-                title,
-                style: TextStyle(
-                  fontFamily: 'CookieRun',
-                  color: Colors.white,
-                  fontSize: 20,
-              ),
+              CRMText(
+                textContent: title,
+                fontSize: 20,
+                fontStyle: AppTextThemes.cookieRunWhiteStyle
             ),
                 SizedBox(height: 10), // 텍스트와 이미지 사이의 간격
                 Expanded(

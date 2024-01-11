@@ -44,4 +44,13 @@ abstract class AppTextThemes {
     color: AppColors.orangeOrigin,
     fontWeight: AppFontWeights.bold,
   );
+
+  static const TextStyle cookieRunStyle = TextStyle(
+    fontFamily: 'CookieRun',
+    color: Colors.black,
+  );
+  static const TextStyle cookieRunWhiteStyle = TextStyle(
+    fontFamily: 'CookieRun',
+    color: Colors.white,
+  );
 }
