@@ -40,8 +40,8 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            // CRMInfo(category:2, level:3),
-            // CRMImgSlide(category:2, level:3) ,
+            //CRMInfo(category:2, level:3),
+            //CRMImgSlide(category:2, level:3) ,
             CupertinoSwitch(
               value: isSwitched,
               onChanged: (value) {
