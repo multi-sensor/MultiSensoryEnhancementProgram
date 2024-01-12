@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:multi_sensory_enhancement_program/app/view/main_page/category_page.dart';
+
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 class CRMLevelButton extends StatelessWidget {
   final String title;
+
 
   const CRMLevelButton({Key? key, required this.title})
       : super(key: key);
@@ -16,7 +19,7 @@ class CRMLevelButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const NewPage()),
+          MaterialPageRoute(builder: (context) => CategoryPage(level: 1)),
         );
       },
       child: AspectRatio(
@@ -35,22 +38,6 @@ class CRMLevelButton extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class NewPage extends StatelessWidget {
-  const NewPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('새 페이지'),
-      ),
-      body: const Center(
-        child: Text('이것은 새 페이지입니다.'),
       ),
     );
   }
