@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 
 void guide(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return CustomDialog();
+      return const CustomDialog();
     },
   );
 }
@@ -59,11 +55,23 @@ class CustomDialogState extends State<CustomDialog> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        color: AppColors.sub2Color,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.black,
+            offset: Offset(0, 10),
+            blurRadius: 10,
+          ),
+        ],
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
+          const Text(
             AppString.str_guide,
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
           ),
@@ -78,13 +86,13 @@ class CustomDialogState extends State<CustomDialog> {
               onPageChanged: (index, reason) {
                 // Update the percent variable based on the current index
                 setState((){
-                  percent = images.length==0? 0.0: (index + 1) / images.length;
+                  percent = images.isEmpty? 0.0: (index + 1) / images.length;
                 });
               },
             ),
             items: images.map((item) => Image.asset(item, fit: BoxFit.cover)).toList(),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           LinearPercentIndicator(
             alignment: MainAxisAlignment.center,
             width: 700,
@@ -93,36 +101,24 @@ class CustomDialogState extends State<CustomDialog> {
             lineHeight: 30.0,
             percent: percent,
             center: Text('${(percent * 100).toInt()}%'
-            , style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+            , style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
-            barRadius: Radius.circular(16.0),
+            barRadius: const Radius.circular(16.0),
             backgroundColor: AppColors.gray300,
-            progressColor: AppColors.redOrigin,
+            progressColor: AppColors.mainColor,
           ),
-          SizedBox(height: 22),
+          const SizedBox(height: 22),
           Align(
             alignment: Alignment.bottomRight,
             child: TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 AppString.str_close,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
             ),
-          ),
-        ],
-      ),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.black,
-            offset: Offset(0, 10),
-            blurRadius: 10,
           ),
         ],
       ),

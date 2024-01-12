@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
+
 class CRMTextField extends StatelessWidget {
   final IconData iconName;
   final String hintText;
@@ -16,7 +17,7 @@ class CRMTextField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.sub2Color,
         border: Border.all(color: AppColors.gray500),
         borderRadius: BorderRadius.circular(5), // Adjust for desired rounding
       ),
@@ -48,7 +49,7 @@ class CRMTextField extends StatelessWidget {
                   hintStyle: AppTextThemes.inputHintTextStyle,
                   contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
                   border: InputBorder.none,
-                  fillColor: AppColors.white,
+                  fillColor: AppColors.sub2Color,
                   filled: true,
                 ),
                 style: AppTextThemes.inputContentTextStyle,
