@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_carousel_slider.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
+
 class CRMMainContent extends StatelessWidget {
   const CRMMainContent({super.key});
 
@@ -7,7 +9,7 @@ class CRMMainContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Container(
-          color: Colors.white,
+          color: AppColors.sub2Color,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

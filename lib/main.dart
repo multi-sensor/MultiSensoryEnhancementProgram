@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:get/get.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_carousel_slider.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_main_content.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_info.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_img_slide.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_level_button.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img_button.dart';
-
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/main_page/main_page.dart';
 import 'package:multi_sensory_enhancement_program/app/view/main_page/category_page.dart';
 import 'package:multi_sensory_enhancement_program/app/view/child/contents_page.dart';
@@ -23,9 +12,9 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: '/main',
     routes: {
-      '/main': (context) => MainPage(),
-      '/contents': (context) => ContentsPage(),
-      '/category': (context) => CategoryPage(),
+      '/main': (context) => const MainPage(),
+      '/contents': (context) => const ContentsPage(),
+      '/category': (context) => const CategoryPage(),
     }
   ));
 }
@@ -46,12 +35,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: '다감각 향상 프로그램',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
+        appBar: const CRMAppBar(title: '공룡 만들기 LEVEL 2+'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -65,8 +54,8 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
 
-        bottomNavigationBar: CRMBottomNavigationBar(),
-        backgroundColor: Colors.white,
+        bottomNavigationBar: const CRMBottomNavigationBar(),
+        backgroundColor: AppColors.sub2Color,
       ),
     );
   }

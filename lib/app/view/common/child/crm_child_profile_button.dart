@@ -14,7 +14,7 @@ class CRMChildProfileButton extends StatelessWidget {
       width: 100,
       height: 100,
       decoration: BoxDecoration(
-        color: AppColors.redOrigin,
+        color: AppColors.mainColor,
         borderRadius: BorderRadius.circular(20), // Adjust for desired rounding
       ),
       child: Column(
