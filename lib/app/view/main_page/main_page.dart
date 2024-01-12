@@ -13,11 +13,38 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage>{
   bool isSwitched = false;
+  late ScrollController levelScrollController;
+  late ScrollController imgScrollController;
+  List<int> categoryIdxs = [for(int i = 0; i < AppValues.fileData["categoryTitle"].length;i++)i];
+  String searchText = "";
   void toggleSwitch(bool value) {
     setState(() {
       isSwitched = value;
     });
+    if (levelScrollController.hasClients) {
+      levelScrollController.jumpTo(0);
+    }
+    if (imgScrollController.hasClients) {
+      imgScrollController.jumpTo(0);
+    }
+    searchText = "";
+    categoryIdxs = [for(int i = 0; i < AppValues.fileData["categoryTitle"].length;i++)i];
   }
+
+  @override
+  void initState() {
+    super.initState();
+    levelScrollController = ScrollController(); // 초기화
+    imgScrollController = ScrollController(); // 초기화
+  }
+
+  @override
+  void dispose() {
+    levelScrollController.dispose();
+    imgScrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,63 +62,38 @@ class _MainPageState extends State<MainPage>{
               CRMTextField(
                 iconName: Icons.search,
                 hintText: AppString.str_themeSearch,
+                onChanged: _handleSearchTextChanged,
               ),
             ],
             SizedBox(height: 5),
             Expanded(
-                child: SwitchWidget(
-                  isSwitched: isSwitched, // Pass state down
-                  onToggle: toggleSwitch, // Pass callback
-                )
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    CupertinoSwitch(
+                      value: this.isSwitched,
+                      onChanged: this.toggleSwitch,
+                    ),
+                    SizedBox(height: 5),
+                    Expanded(
+                      child: this.isSwitched
+                          ? buildLevelButtonPage() // 여기에 컨트롤러 전달
+                          : buildImgButtonPage(), // 여기에 컨트롤러 전달
+                    ),
+                  ],
+                ),
             ),
           ],
         ),
       ),
     );
   }
-}
 
-class SwitchWidget extends StatefulWidget {
-  final bool isSwitched;
-  final Function(bool) onToggle;
-
-  const SwitchWidget({super.key, required this.isSwitched, required this.onToggle});
-
-  @override
-  _SwitchWidgetState createState() => _SwitchWidgetState();
-}
-
-class _SwitchWidgetState extends State<SwitchWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        CupertinoSwitch(
-          value: widget.isSwitched,
-          onChanged: widget.onToggle,
-        ),
-        Expanded(
-          child: widget.isSwitched
-              ? buildLevelButtonPage()
-              : buildImgButtonPage(),
-        ),
-      ],
-    );
-  }
-}
-
-Widget createLevelButtonData(index) {
-  return CRMLevelButton(
-    title: AppValues.fileData["levelTitle"][index].toString()
-  );
-}
-
-Widget buildLevelButtonPage() {
-  return Scrollbar(
-    child: Container(
-      height: 800, // 고정 높이
-      width: 800, // 고정 너비
+  Widget buildLevelButtonPage() {
+    // Level 페이지 구성
+    return Container(
+      height: 800,
+      width: 800,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -99,28 +101,26 @@ Widget buildLevelButtonPage() {
           mainAxisSpacing: 15,
           childAspectRatio: 1,
         ),
-        itemCount: AppValues.fileData["levelTitle"].length, // 버튼 데이터의 길이
+        itemCount: AppValues.fileData["levelTitle"].length,
         itemBuilder: (context, index) {
           return createLevelButtonData(index);
         },
+        controller: levelScrollController, // 전달받은 컨트롤러 사용
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget createImgButtonData(index) {
-  return CRMImgButton(
-    title: AppValues.fileData['categoryTitle'][index].toString(),
-    imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
-    imageIdx: index
-  );
-}
+  Widget createLevelButtonData(index) {
+    return CRMLevelButton(
+        title: AppValues.fileData["levelTitle"][index].toString()
+    );
+  }
 
-Widget buildImgButtonPage() {
-  return Scrollbar(
-    child: Container(
-      height: 800, // 고정 높이
-      width: 800, // 고정 너비
+  Widget buildImgButtonPage() {
+    // Image 페이지 구성
+    return Container(
+      height: 800,
+      width: 800,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -128,11 +128,41 @@ Widget buildImgButtonPage() {
           mainAxisSpacing: 15,
           childAspectRatio: 1,
         ),
-        itemCount: AppValues.fileData["categoryTitle"].length,
+        itemCount: categoryIdxs.length,
         itemBuilder: (context, index) {
           return createImgButtonData(index);
         },
+        controller: imgScrollController, // 전달받은 컨트롤러 사용
       ),
-    ),
-  );
+    );
+  }
+
+  Widget createImgButtonData(index) {
+    return CRMImgButton(
+        title: AppValues.fileData["categoryTitle"][categoryIdxs[index]].toString(),
+        imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][categoryIdxs[index]].toString()}.png',
+        imageIdx: categoryIdxs[index]
+    );
+  }
+
+  void _handleSearchTextChanged(String text) {
+    setState(() {
+      searchText = text;
+    });
+    if(searchText.isEmpty){
+      categoryIdxs = [for(int i = 0; i < AppValues.fileData["categoryTitle"].length;i++)i];
+    }
+    else{
+      categoryIdxs = [];
+      AppValues.fileData["categoryTitle"].asMap().forEach((index, title) {
+        if (RegExp(searchText, caseSensitive: false).hasMatch(title)) {
+          categoryIdxs.add(index);
+        }
+      });
+    }
+  }
+
+
 }
+
+

@@ -10,6 +10,7 @@ class CRMImgButton extends StatelessWidget {
   final String imagePath;
   final int imageIdx;
 
+
   const CRMImgButton({Key? key, required this.title, required this.imagePath, required this.imageIdx})
       : super(key: key);
 
@@ -55,12 +56,19 @@ class CRMImgButton extends StatelessWidget {
                           color: Colors.white70,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: Center(
+                        child: TextButton(
                           child: CRMText(
                             textContent: AppValues.fileData['levelTitle'][index] ?? '',
                             fontSize: 16,// 리스트에서 제목 가져오기
                             fontStyle: AppTextThemes.cookieRunStyle
                           ),
+                          onPressed: (){
+                            Navigator.pushNamed(
+                              context,
+                              '/contents',
+                              arguments: {'level': index, 'category': imageIdx},
+                            );
+                          },
                         ),
                       );
                     },
