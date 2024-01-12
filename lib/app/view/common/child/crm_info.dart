@@ -50,13 +50,9 @@ class _CRMInfoState extends State<CRMInfo> {
             fontSize: 20,
             fontStyle: AppTextThemes.textSemiTitleStyle,
           ),
-          IconButton(
-            icon: Image.asset(
-              finishedImage,
-              width: MediaQuery.of(context).size.width * 0.2,
-              height: MediaQuery.of(context).size.width * 0.15,
-            ),
-            onPressed: () {
+          SizedBox(height: 10),
+          GestureDetector(
+            onTap: () {
               if (!isDialogOpen) {
                 showDialog(
                   context: context,
@@ -90,7 +86,13 @@ class _CRMInfoState extends State<CRMInfo> {
                 );
               }
             },
+            child: Image.asset(
+              finishedImage,
+              width: 200, // 이미지의 너비 조정
+              height: 200, // 이미지의 높이 조정
+            ),
           ),
+          SizedBox(height: 10),
           CRMText(
             textContent: imageName,
             fontSize: 20,
