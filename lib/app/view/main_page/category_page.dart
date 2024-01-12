@@ -26,8 +26,9 @@ class CategoryPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 10),
+            Image.asset('images/creamo_logo.png', height: 150, width: 200),
             SizedBox(height: 5),
-            buildImgButtonPage()
+            Expanded(child: buildImgButtonPage())
           ],
         ),
       ),
