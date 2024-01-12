@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_fontweight.dart';
+
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 abstract class AppTextThemes {
   static const TextStyle inputHintTextStyle = TextStyle(
@@ -26,12 +27,12 @@ abstract class AppTextThemes {
   );
 
   static const TextStyle textTitleStyle = TextStyle(
-    color: AppColors.orangeOrigin,
+    color: AppColors.mainColor,
     fontWeight: AppFontWeights.bold,
   );
 
   static const TextStyle sliderTitleStyle = TextStyle(
-  color: AppColors.orangeOrigin,
+  color: AppColors.mainColor,
   fontWeight: AppFontWeights.bold,
   );
 
@@ -41,7 +42,7 @@ abstract class AppTextThemes {
   );
 
   static const TextStyle textContentStyle = TextStyle(
-    color: AppColors.orangeOrigin,
+    color: AppColors.mainColor,
     fontWeight: AppFontWeights.bold,
   );
 

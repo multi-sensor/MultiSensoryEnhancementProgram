@@ -6,6 +6,7 @@ import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
+
 class CRMImgSlide extends StatefulWidget {
   final int category;
   final int level;
@@ -27,19 +28,19 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   final CarouselController _controller = CarouselController();
   final CarouselController _hintController = CarouselController();
   late List<String> imageList;
-  final Color backgroundColor = AppColors.orangeBackground;
+  final Color backgroundColor = AppColors.sub1Color;
   @override
   void initState() {
     super.initState();
     categoryName = AppValues.fileData['category'][widget.category];
     levelName = AppValues.fileData['level'][widget.level];
-    finishedImage = 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_완성.png';
-    imageName = AppValues.fileData[this.categoryName][this.levelName]['name'];
-    hintList = AppValues.fileData[this.categoryName][this.levelName]['hints'];
-    imageList = [for (var i = 1; i <= AppValues.fileData[this.categoryName][this.levelName]['imageNumber']; i++) 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_$i.png'];
-    imageList.add('images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_완성.png');
-    fileList = [for (var i = 1; i <= AppValues.fileData[this.categoryName][this.levelName]['imageNumber']; i++) '${this.categoryName}_${this.levelName}_$i'];
-    fileList.add('${this.categoryName}_${this.levelName}_완성');
+    finishedImage = 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png';
+    imageName = AppValues.fileData[categoryName][levelName]['name'];
+    hintList = AppValues.fileData[categoryName][levelName]['hints'];
+    imageList = [for (var i = 1; i <= AppValues.fileData[categoryName][levelName]['imageNumber']; i++) 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_$i.png'];
+    imageList.add('images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png');
+    fileList = [for (var i = 1; i <= AppValues.fileData[categoryName][levelName]['imageNumber']; i++) '${categoryName}_${levelName}_$i'];
+    fileList.add('${categoryName}_${levelName}_완성');
 
     setCurrentHint();
   }
@@ -56,7 +57,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                 height: MediaQuery.of(context).size.height*0.7,
                 width: MediaQuery.of(context).size.width*0.5,
                 decoration: BoxDecoration(
-                  color: this.backgroundColor,
+                  color: backgroundColor,
                   borderRadius: BorderRadius.circular(30)
                 ),
                 padding: const EdgeInsets.all(30),
@@ -71,10 +72,10 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
               IconButton(icon:const Icon(Icons.arrow_right), onPressed:incrementIdx, iconSize: 100, color: AppColors.gray500)
             ],
           ),
-          SizedBox(height:10),
+          const SizedBox(height:10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == this._current? AppColors.orangeOrigin : AppColors.gray500, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
+            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == _current? AppColors.orangeOrigin : AppColors.gray500, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
           )
         ],
       );
@@ -89,7 +90,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
             builder: (context) {
               return PhotoView(
                 imageProvider: AssetImage(imgLink),
-                backgroundDecoration: BoxDecoration(color: this.backgroundColor),
+                backgroundDecoration: BoxDecoration(color: backgroundColor),
               );
             },
           );
@@ -98,8 +99,8 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
       options: CarouselOptions(
         enableInfiniteScroll: false,
         height: MediaQuery.of(context).size.height*0.5,
-        viewportFraction: 1.0,
-        autoPlay: false,
+        viewportFraction: 1.0, //한번에 보이는 이미지 개수
+        autoPlay: false, //자동으로 넘어가기 해제
         onPageChanged: (index, reason) {
           setState(() {
             _current = index;
@@ -112,21 +113,21 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
 
   Widget guideBar(){
 
-    return _currentHint.length==0?
-    Align(alignment: Alignment.centerLeft, child: CRMText(textContent: this._current != imageList.length -1? 'Step ${this._current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,)):
+    return _currentHint.isEmpty?
+    Align(alignment: Alignment.centerLeft, child: CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,)):
     Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
-          CRMText(textContent: this._current != imageList.length -1? 'Step ${this._current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+          CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
           TextButton(
             style: TextButton.styleFrom(minimumSize: Size.zero),
-            child: CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
+            child: const CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
             onPressed: (){
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+                    title: const CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
                     content: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.8,
@@ -138,7 +139,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                               builder: (context) {
                                 return PhotoView(
                                   imageProvider: AssetImage(imgLink),
-                                  backgroundDecoration: BoxDecoration(color: this.backgroundColor),
+                                  backgroundDecoration: BoxDecoration(color: backgroundColor),
                                 );
                               },
                             );
@@ -159,7 +160,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                     ),
                     actions: <Widget>[
                       TextButton(
-                        child: CRMText(textContent: AppString.str_close, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
+                        child: const CRMText(textContent: AppString.str_close, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
                         onPressed: () {
                           Navigator.of(context).pop(); // Dialog 닫기
                         },
@@ -179,7 +180,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   void incrementIdx(){
 
     setState((){
-      if(this._current < imageList.length - 1){
+      if(_current < imageList.length - 1){
         _controller.jumpToPage(_current+1);
       }
     });
@@ -188,7 +189,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
 
   void decrementIdx(){
     setState((){
-      if(this._current > 0){
+      if(_current > 0){
         _controller.jumpToPage(_current-1);
       }
     });
@@ -207,7 +208,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
       _currentHint = hintList.where((hint) {
         return hint.startsWith(fileList[_current]);
       }).map((hint) {
-        return 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/' + hint;
+        return 'images/$categoryName/${categoryName}_$levelName/$hint';
       }).toList();
     });
   }

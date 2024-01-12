@@ -6,6 +6,7 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -48,14 +49,14 @@ class _MainPageState extends State<MainPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CRMAppBar(title: 'CREAMO'),
+      appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Image.asset('images/creamo_logo.png', height: 150, width: 200),
             if(!isSwitched) ...[
               SizedBox(height: 10),
@@ -95,7 +96,7 @@ class _MainPageState extends State<MainPage>{
       height: 800,
       width: 800,
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
@@ -115,14 +116,13 @@ class _MainPageState extends State<MainPage>{
         title: AppValues.fileData["levelTitle"][index].toString()
     );
   }
-
   Widget buildImgButtonPage() {
     // Image 페이지 구성
     return Container(
       height: 800,
       width: 800,
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,

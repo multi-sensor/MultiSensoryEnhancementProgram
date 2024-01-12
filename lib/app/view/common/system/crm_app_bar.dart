@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_guide.dart';
 
 class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CRMAppBar({Key? key, required this.title});
+  const CRMAppBar({super.key, required this.title});
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.white,
-      foregroundColor: AppColors.orangeOrigin,
+      backgroundColor: AppColors.sub2Color,
+      foregroundColor: AppColors.mainColor,
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
       leading: IconButton(
-        icon: Icon(Icons.house, color: AppColors.redOrigin), //홈으로 버튼
+        icon: const Icon(Icons.house, color: AppColors.mainColor), //홈으로 버튼
         onPressed: () {
           Navigator.pushReplacementNamed(context, '/main');
         },
@@ -21,12 +22,13 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin), //사용 가이드 버튼
+          icon: const Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin),
+          //사용 가이드 버튼
           onPressed: () {
-            // Add functionality for the info icon here
-            print(' ');
+            guide(context);
           },
-          color: AppColors.blueOrigin, //물결색상 지정
+          color: AppColors.blueOrigin,
+          //물결색상 지정
           iconSize: 35,
         ),
       ],

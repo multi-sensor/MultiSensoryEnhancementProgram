@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_carousel_slider.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
@@ -29,20 +28,21 @@ class _CRMInfoState extends State<CRMInfo> {
   late String finishedImage;
   late String imageName;
 
+  @override
   void initState() {
     super.initState();
     // categoryName = AppValues.fileData['category'][widget.category];
     categoryName = AppValues.fileData['category'][widget.category];
     levelName = AppValues.fileData['level'][widget.level];
-    finishedImage = 'images/${this.categoryName}/${this.categoryName}_${this.levelName}/${this.categoryName}_${this.levelName}_완성.png';
-    imageName = AppValues.fileData[this.categoryName][this.levelName]['name'];
+    finishedImage = 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png';
+    imageName = AppValues.fileData[categoryName][levelName]['name'];
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.blueBackground,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Column(
         children: [
           const CRMText(
@@ -52,7 +52,7 @@ class _CRMInfoState extends State<CRMInfo> {
           ),
           IconButton(
             icon: Image.asset(
-              this.finishedImage,
+              finishedImage,
               width: MediaQuery.of(context).size.width * 0.2,
               height: MediaQuery.of(context).size.width * 0.15,
             ),
@@ -69,18 +69,18 @@ class _CRMInfoState extends State<CRMInfo> {
                         });
                       },
                       child: AlertDialog(
-                        content: Container(
+                        content: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.8,
                           height: MediaQuery.of(context).size.height * 0.8,
                           child: Center(
                             child: Image.asset(
-                              this.finishedImage,
+                              finishedImage,
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: MediaQuery.of(context).size.height * 0.7,
                             ),
                           ),
                         ),
-                        actions: [],
+                        actions: const [],
                       ),
                     );
                     setState(() {
@@ -92,7 +92,7 @@ class _CRMInfoState extends State<CRMInfo> {
             },
           ),
           CRMText(
-            textContent: this.imageName,
+            textContent: imageName,
             fontSize: 20,
             fontStyle: AppTextThemes.textContentStyle,
           ),

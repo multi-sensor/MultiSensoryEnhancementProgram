@@ -2,6 +2,7 @@
 
 abstract class AppString {
   static const str_creamo = "creamo";
+  static const str_guide = "사용자 이용 가이드";
   static const str_finish = "완성!!";
   static const str_home = "홈";
   static const str_goal = "오늘의 목표";
