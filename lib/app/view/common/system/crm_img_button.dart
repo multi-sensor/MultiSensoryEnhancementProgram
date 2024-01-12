@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 
 class CRMImgButton extends StatelessWidget {
   final String title;
@@ -33,9 +32,9 @@ class CRMImgButton extends StatelessWidget {
         builder: (context) => Dialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
           child: Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             height: 450, width: 500,
-            color: const Color(0xfffad993),
+            color: AppColors.sub1Color,
             //color: const Color(0xfff6f1ed),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -44,32 +43,31 @@ class CRMImgButton extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: ElevatedButton(
                     onPressed: () => Navigator.pop(context),
-                    child: Text('X'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
+                      foregroundColor: Colors.black, backgroundColor: AppColors.sub2Color,
                     ),
+                    child: const Text('X'),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Expanded(
                   child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 2.0,
                     ),
-                    itemCount: this.title.length, // 리스트의 길이를 사용
+                    itemCount: title.length, // 리스트의 길이를 사용
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: Colors.white70,
+                          color: AppColors.sub2Color,
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
                           child: Text(
                             AppValues.fileData['levelTitle'][index] ?? '', // 리스트에서 제목 가져오기
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'CookieRun',
                               fontSize: 16,
                               color: Colors.black,
@@ -88,9 +86,9 @@ class CRMImgButton extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1, // 정사각형
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFA147),
+            color: AppColors.mainColor,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Column(
@@ -100,13 +98,13 @@ class CRMImgButton extends StatelessWidget {
               children: <Widget>[
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'CookieRun',
-                  color: Colors.white,
+                  color: AppColors.sub2Color,
                   fontSize: 20,
               ),
             ),
-                SizedBox(height: 10), // 텍스트와 이미지 사이의 간격
+                const SizedBox(height: 10), // 텍스트와 이미지 사이의 간격
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter,

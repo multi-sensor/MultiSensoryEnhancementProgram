@@ -6,22 +6,25 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CRMAppBar(title: 'CREAMO'),
+      appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Image.asset('images/creamo_logo.png', height: 150, width: 200),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             CRMTextField(iconName: Icons.search, hintText: AppString.str_themeSearch),
-            SizedBox(height: 5),
-            Expanded(child: SwitchWidget())
+            const SizedBox(height: 5),
+            const Expanded(child: SwitchWidget())
           ]
         ),
       ),
@@ -73,11 +76,11 @@ Widget createLevelButtonData(index) {
 
 Widget buildLevelButtonPage() {
   return Scrollbar(
-    child: Container(
+    child: SizedBox(
       height: 800, // 고정 높이
       width: 800, // 고정 너비
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
@@ -102,11 +105,11 @@ Widget createImgButtonData(index) {
 
 Widget buildImgButtonPage() {
   return Scrollbar(
-    child: Container(
+    child: SizedBox(
       height: 800, // 고정 높이
       width: 800, // 고정 너비
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
