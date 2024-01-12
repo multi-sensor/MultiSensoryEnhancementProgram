@@ -28,6 +28,8 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   final CarouselController _hintController = CarouselController();
   late List<String> imageList;
   final Color backgroundColor = AppColors.orangeBackground;
+
+
   @override
   void initState() {
     super.initState();
