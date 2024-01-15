@@ -27,7 +27,7 @@ abstract class AppValues {
 
     "집만들기": {
       "Lv.1": {
-        "imageNumber": 3
+        "imageNumber": 3,
         "hints": [],
         "name": "집 1"
       },
@@ -56,7 +56,7 @@ abstract class AppValues {
         "hints": ["집만들기_Lv.3+_7-1.png", "집만들기_Lv.3+_10-1.png"],
         "name": "집 3+"
       }
-    }
+    },
 
     "악기만들기": {
       "Lv.1": {
@@ -89,7 +89,7 @@ abstract class AppValues {
         "hints": ["악기만들기_Lv.3+_4-1.png"],
         "name": "피아노"
       }
-    }
+    },
 
     "가전제품만들기": {
       "Lv.1": {
@@ -122,7 +122,7 @@ abstract class AppValues {
         "hints": ["가전제품만들기_Lv.3+_7-1.png"],
         "name": "다리미"
       }
-    }
+    },
 
     "공룡만들기": {
       "Lv.1": {
