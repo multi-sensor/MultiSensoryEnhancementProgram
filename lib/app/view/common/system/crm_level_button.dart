@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:multi_sensory_enhancement_program/app/view/main_page/category_page.dart';
 
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
@@ -19,7 +17,7 @@ class CRMLevelButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CategoryPage(level: 1)),
+          MaterialPageRoute(builder: (context) => const CategoryPage(level: 1)),
         );
       },
       child: AspectRatio(

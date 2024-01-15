@@ -8,6 +8,8 @@ import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -49,6 +51,7 @@ class _MainPageState extends State<MainPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: AppColors.purpleOrigin,
       appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
         alignment: Alignment.center,
@@ -59,25 +62,25 @@ class _MainPageState extends State<MainPage>{
             const SizedBox(height: 10),
             Image.asset('images/creamo_logo.png', height: 150, width: 200),
             if(!isSwitched) ...[
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CRMTextField(
                 iconName: Icons.search,
                 hintText: AppString.str_themeSearch,
                 onChanged: _handleSearchTextChanged,
               ),
             ],
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     CupertinoSwitch(
-                      value: this.isSwitched,
-                      onChanged: this.toggleSwitch,
+                      value: isSwitched,
+                      onChanged: toggleSwitch,
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Expanded(
-                      child: this.isSwitched
+                      child: isSwitched
                           ? buildLevelButtonPage() // 여기에 컨트롤러 전달
                           : buildImgButtonPage(), // 여기에 컨트롤러 전달
                     ),
@@ -92,7 +95,7 @@ class _MainPageState extends State<MainPage>{
 
   Widget buildLevelButtonPage() {
     // Level 페이지 구성
-    return Container(
+    return SizedBox(
       height: 800,
       width: 800,
       child: GridView.builder(
@@ -118,7 +121,7 @@ class _MainPageState extends State<MainPage>{
   }
   Widget buildImgButtonPage() {
     // Image 페이지 구성
-    return Container(
+    return SizedBox(
       height: 800,
       width: 800,
       child: GridView.builder(
@@ -164,5 +167,3 @@ class _MainPageState extends State<MainPage>{
 
 
 }
-
-

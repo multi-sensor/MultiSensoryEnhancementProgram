@@ -34,7 +34,7 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
       shape: const Border(
         bottom: BorderSide(
-          color: AppColors.black,
+          color: AppColors.white,
           width: 1,
         ),
       ),
