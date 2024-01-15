@@ -25,13 +25,13 @@ class CRMLevelButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: AppColors.mainColor,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Align(
             child: CRMText(
               textContent: title,
-              fontSize: 20,
+              fontSize: 40,
               fontStyle: AppTextThemes.cookieRunWhiteStyle
             ),
           ),

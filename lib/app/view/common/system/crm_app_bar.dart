@@ -10,7 +10,7 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.sub2Color,
+      backgroundColor: AppColors.white,
       foregroundColor: AppColors.mainColor,
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
       leading: IconButton(

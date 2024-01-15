@@ -51,6 +51,6 @@ abstract class AppTextThemes {
   );
   static const TextStyle cookieRunWhiteStyle = TextStyle(
     fontFamily: 'CookieRun',
-    color: Colors.white,
+    color: Colors.black,
   );
 }
