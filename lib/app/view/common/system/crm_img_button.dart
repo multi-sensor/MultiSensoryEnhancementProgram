@@ -27,8 +27,7 @@ class CRMImgButton extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(30),
               height: 450, width: 500,
-              color: AppColors.sub1Color,
-              //color: const Color(0xfff6f1ed),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub1Color),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -89,7 +88,7 @@ class CRMImgButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: AppColors.mainColor,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Column(

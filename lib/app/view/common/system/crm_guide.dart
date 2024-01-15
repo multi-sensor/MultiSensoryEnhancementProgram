@@ -71,10 +71,25 @@ class CustomDialogState extends State<CustomDialog> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(
+                Icons.close,
+                size: 30,
+                color: AppColors.black,
+              ),
+            ),
+          ),
+          const SizedBox(height: 50),
           const Text(
             AppString.str_guide,
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
           ),
+          const SizedBox(height: 22),
           CarouselSlider(
             options: CarouselOptions(
               height: MediaQuery.of(context).size.height * 0.5,
@@ -92,7 +107,7 @@ class CustomDialogState extends State<CustomDialog> {
             ),
             items: images.map((item) => Image.asset(item, fit: BoxFit.cover)).toList(),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 22),
           LinearPercentIndicator(
             alignment: MainAxisAlignment.center,
             width: 700,
@@ -108,18 +123,6 @@ class CustomDialogState extends State<CustomDialog> {
             progressColor: AppColors.mainColor,
           ),
           const SizedBox(height: 22),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text(
-                AppString.str_close,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-            ),
-          ),
         ],
       ),
     );

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_bottom_navigation_bar.dart';
-import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 import 'package:multi_sensory_enhancement_program/app/view/main_page/main_page.dart';
 import 'package:multi_sensory_enhancement_program/app/view/main_page/category_page.dart';
 import 'package:multi_sensory_enhancement_program/app/view/child/contents_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/main',
         routes: {
-          '/main': (context) => MainPage(),
+          '/main': (context) => const MainPage(),
           '/contents': (context) {
             final routeSettings = ModalRoute.of(context)!.settings;
             final args = routeSettings.arguments as Map<String, int>? ?? {};

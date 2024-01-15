@@ -50,7 +50,7 @@ class _CRMInfoState extends State<CRMInfo> {
             fontSize: 20,
             fontStyle: AppTextThemes.textSemiTitleStyle,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
               if (!isDialogOpen) {
@@ -92,7 +92,7 @@ class _CRMInfoState extends State<CRMInfo> {
               height: 200, // 이미지의 높이 조정
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           CRMText(
             textContent: imageName,
             fontSize: 20,
