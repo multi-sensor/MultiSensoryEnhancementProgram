@@ -80,6 +80,8 @@ class CategoryPage extends StatelessWidget {
               title: AppValues.fileData['categoryTitle'][index].toString(),
               imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
               imageIdx: index,
+              needLevel: false,
+              level: level
             );
           },
         ),
