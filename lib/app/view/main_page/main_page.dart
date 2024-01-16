@@ -110,25 +110,31 @@ class _MainPageState extends State<MainPage> {
   Widget buildLevelButtonPage() {
     // Level 페이지 구성
     return Center(
-      child: SizedBox(
-        height: 800,
-        width: 800,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1,
+      child: Column(
+        children: [
+          SizedBox(height: 60), // 주제별 버튼이랑 높이 맞추기용
+          SizedBox(
+            height: 800,
+            width: 800,
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 15,
+                childAspectRatio: 1,
+              ),
+              itemCount: AppValues.fileData["levelTitle"].length,
+              itemBuilder: (context, index) {
+                return createLevelButtonData(index);
+              },
+              controller: levelScrollController, // 전달받은 컨트롤러 사용
+            ),
           ),
-          itemCount: AppValues.fileData["levelTitle"].length,
-          itemBuilder: (context, index) {
-            return createLevelButtonData(index);
-          },
-          controller: levelScrollController, // 전달받은 컨트롤러 사용
-        ),
+        ],
       ),
     );
   }
+
 
   Widget createLevelButtonData(index) {
     return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString());
