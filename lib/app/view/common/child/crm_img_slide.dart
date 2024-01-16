@@ -23,7 +23,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   late String levelName;
   late String finishedImage;
   late String imageName;
-  late List<String> hintList;
+  late List<dynamic> hintList;
   late List<String> fileList;
   final CarouselController _controller = CarouselController();
   final CarouselController _hintController = CarouselController();
@@ -213,7 +213,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
         return hint.startsWith(fileList[_current]);
       }).map((hint) {
         return 'images/$categoryName/${categoryName}_$levelName/$hint';
-      }).toList();
+      }).toList().cast<String>();
     });
   }
 }

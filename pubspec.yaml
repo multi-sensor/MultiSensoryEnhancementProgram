@@ -80,6 +80,24 @@ flutter:
     - images/가전제품만들기/가전제품만들기_Lv.2+/
     - images/가전제품만들기/가전제품만들기_Lv.3/
     - images/가전제품만들기/가전제품만들기_Lv.3+/
+    - images/공룡만들기/공룡만들기_Lv.1/
+    - images/공룡만들기/공룡만들기_Lv.1+/
+    - images/공룡만들기/공룡만들기_Lv.2/
+    - images/공룡만들기/공룡만들기_Lv.2+/
+    - images/공룡만들기/공룡만들기_Lv.3/
+    - images/공룡만들기/공룡만들기_Lv.3+/
+    - images/악기만들기/악기만들기_Lv.1/
+    - images/악기만들기/악기만들기_Lv.1+/
+    - images/악기만들기/악기만들기_Lv.2/
+    - images/악기만들기/악기만들기_Lv.2+/
+    - images/악기만들기/악기만들기_Lv.3/
+    - images/악기만들기/악기만들기_Lv.3+/
+    - images/집만들기/집만들기_Lv.1/
+    - images/집만들기/집만들기_Lv.1+/
+    - images/집만들기/집만들기_Lv.2/
+    - images/집만들기/집만들기_Lv.2+/
+    - images/집만들기/집만들기_Lv.3/
+    - images/집만들기/집만들기_Lv.3+/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
