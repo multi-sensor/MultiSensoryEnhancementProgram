@@ -126,7 +126,8 @@ class _MainPageState extends State<MainPage> {
               ),
               itemCount: AppValues.fileData["levelTitle"].length,
               itemBuilder: (context, index) {
-                return createLevelButtonData(index);
+                int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
+                return createLevelButtonData(newIndex);
               },
               controller: levelScrollController, // 전달받은 컨트롤러 사용
             ),
@@ -138,7 +139,7 @@ class _MainPageState extends State<MainPage> {
 
 
   Widget createLevelButtonData(index) {
-    return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString());
+    return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString(), level: index);
   }
 
   Widget buildImgButtonPage() {
@@ -184,6 +185,21 @@ class _MainPageState extends State<MainPage> {
         if (RegExp(searchText, caseSensitive: false).hasMatch(title)) {
           categoryIdxs.add(index);
         }
+        /*
+        else{
+          String category = AppValues.fileData["category"][index];
+          if(AppValues.fileData.containsKey("category")){
+            List <String> levels = AppValues.fileData["level"];
+            for (int i = 0; i < levels.length;i++){
+              if (AppValues.fileData[category].containsKey(levels[i]) &&
+                  RegExp(searchText, caseSensitive: false).hasMatch(AppValues.fileData[category][levels[i]]["name"])) {
+                categoryIdxs.add(index);
+                break; // 중복 추가를 방지하기 위해 추가된 카테고리 인덱스 후 루프 종료
+              }
+            }
+          }
+
+        }*/
       });
     }
   }
