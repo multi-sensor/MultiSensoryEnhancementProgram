@@ -84,6 +84,8 @@ class _MainPageState extends State<MainPage> {
                     ],
                   ),
                 ],
+                if (isSwitched)
+                  SizedBox(height: 60),
                 const SizedBox(height: 5),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -112,7 +114,6 @@ class _MainPageState extends State<MainPage> {
     return Center(
       child: Column(
         children: [
-          SizedBox(height: 60), // 주제별 버튼이랑 높이 맞추기용
           SizedBox(
             height: 800,
             width: 800,
