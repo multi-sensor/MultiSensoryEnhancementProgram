@@ -52,7 +52,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CRMAppBar(title: 'CREAMO'),
+      appBar: CRMAppBar(title: 'creamo'),
       body: Stack(
         children: [
           Container(
