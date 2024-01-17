@@ -2,8 +2,13 @@
 
 abstract class AppString {
   static const str_creamo = "creamo";
+  static const str_guide = "사용자 이용 가이드";
+  static const str_finish = "완성!!";
   static const str_home = "홈";
   static const str_goal = "오늘의 목표";
+  static const str_hint = "Hint";
+  static const str_themeSearch = "테마 검색";
+  static const str_close = "닫기";
   static const str_setting = "설정";
   static const str_mypage = "마이페이지";
   static const str_email = "이메일";
@@ -44,5 +49,5 @@ abstract class AppString {
   static const setting = "images/icon_setting.svg";
   static final profile =
   List.generate(8, (index) => "images/profile_$index.png");
-  static final baseProfile = "images/profile_0.png";
+  static const baseProfile = "images/profile_0.png";
 }

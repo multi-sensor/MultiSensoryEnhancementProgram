@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
+import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_guide.dart';
 
-class CRMAppBar extends StatelessWidget implements PreferredSizeWidget{
+class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CRMAppBar({super.key, required this.title});
 
   final String title;
@@ -10,16 +10,30 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.deepOrange,
-      title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-      leading: IconButton(icon: Icon(Icons.circle, color: Colors.deepOrange), onPressed: null),
+      backgroundColor: AppColors.white,
+      foregroundColor: AppColors.mainColor,
+      title: GestureDetector(
+        onTap: () {
+          Navigator.pushReplacementNamed(context, '/main');
+        },
+        child: Image.asset('images/creamo_logo.png', width: 150, height: 40),
+      ),
+
       actions: [
-        IconButton(icon: Icon(Icons.menu, color: Colors.black54), onPressed: null)
+        IconButton(
+          icon: const Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin),
+          //사용 가이드 버튼
+          onPressed: () {
+            guide(context);
+          },
+          color: AppColors.blueOrigin,
+          //물결색상 지정
+          iconSize: 35,
+        ),
       ],
-      shape: Border(
+      shape: const Border(
         bottom: BorderSide(
-          color: Colors.black12,
+          color: AppColors.white,
           width: 1,
         ),
       ),

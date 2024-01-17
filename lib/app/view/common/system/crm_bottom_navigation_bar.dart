@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 
 class CRMBottomNavigationBar extends StatelessWidget {
   const CRMBottomNavigationBar({super.key});
@@ -29,8 +28,7 @@ class CRMBottomNavigationBar extends StatelessWidget {
       ],
       selectedItemColor: Colors.black54,
       unselectedItemColor: Colors.black54,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.sub2Color,
     );
   }
-
 }
