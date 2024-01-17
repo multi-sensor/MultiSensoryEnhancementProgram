@@ -12,14 +12,13 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.mainColor,
-      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-      leading: IconButton(
-        icon: const Icon(Icons.house, color: AppColors.mainColor), //홈으로 버튼
-        onPressed: () {
+      title: GestureDetector(
+        onTap: () {
           Navigator.pushReplacementNamed(context, '/main');
         },
-        iconSize: 35,
+        child: Image.asset('images/creamo_logo.png', width: 150, height: 40),
       ),
+
       actions: [
         IconButton(
           icon: const Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin),
