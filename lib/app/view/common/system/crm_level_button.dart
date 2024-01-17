@@ -6,9 +6,9 @@ import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 class CRMLevelButton extends StatelessWidget {
   final String title;
+  final int level;
 
-
-  const CRMLevelButton({Key? key, required this.title})
+  const CRMLevelButton({Key? key, required this.title, required this.level})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class CRMLevelButton extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const CategoryPage(level: 1)),
+          MaterialPageRoute(builder: (context) => CategoryPage(level: this.level)),
         );
       },
       child: AspectRatio(
