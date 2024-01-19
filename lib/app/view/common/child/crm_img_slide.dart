@@ -6,7 +6,6 @@ import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
-import 'package:flutter/cupertino.dart';
 
 class CRMImgSlide extends StatefulWidget {
   final int category;
@@ -53,18 +52,8 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.diagonal3Values(1.0, 3.0, 1.0),
-              child: IconButton(
-                icon:const Icon(CupertinoIcons.arrowtriangle_left_fill),
-                onPressed:decrementIdx,
-                iconSize: 50,
-                color: AppColors.gray400,
-                padding: EdgeInsets.only(right: 10),
-                constraints: BoxConstraints(),
-              ),
-            ),
+            IconButton(icon:const Icon(Icons.arrow_left), onPressed:decrementIdx, iconSize: 100, color: AppColors.gray500),
+
             Container(
               height: MediaQuery.of(context).size.height*0.7,
               width: MediaQuery.of(context).size.width*0.5,
@@ -82,24 +71,15 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                 ],
               ),
             ),
-            Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.diagonal3Values(1.0, 3.0, 1.0),
-              child: IconButton(
-                icon:const Icon(CupertinoIcons.arrowtriangle_right_fill),
-                onPressed:incrementIdx,
-                iconSize: 50,
-                color: AppColors.gray400,
-                padding: EdgeInsets.only(left: 10),
-                constraints: BoxConstraints(),
-              ),
-            ),
+
+
+            IconButton(icon:const Icon(Icons.arrow_right), onPressed:incrementIdx, iconSize: 100, color: AppColors.gray500)
           ],
         ),
         const SizedBox(height:10),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == _current? AppColors.orangeOrigin : AppColors.gray400, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
+            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == _current? AppColors.orangeOrigin : AppColors.gray500, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
         )
       ],
     );

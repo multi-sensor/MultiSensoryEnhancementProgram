@@ -18,11 +18,10 @@ abstract class AppValues {
   // static const int defaultPageNumber = 1;
   // static const int defaultDebounceTimeInMilliSeconds = 1000;
   // static const int defaultThrottleTimeInMilliSeconds = 500;
-
   static const  Map<String, dynamic> fileData = {
     "category": ["기차만들기", "집만들기", "악기만들기", "가전제품만들기", "공룡만들기", "곤충만들기"],
     "categoryTitle": ["기차 만들기", "집 만들기", "악기 만들기", "가전제품 만들기", "공룡 만들기", "곤충 만들기"],
-    "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug'],
+    "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'train'],
     "level": ["Lv.1", "Lv.1+", "Lv.2", "Lv.2+", "Lv.3", "Lv.3+"],
     "levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],
 
