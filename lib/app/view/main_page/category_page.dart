@@ -14,6 +14,12 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'), // Change to your background image path
+            fit: BoxFit.cover,
+          ),
+        ),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -52,7 +52,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CRMAppBar(title: 'creamo'),
+      appBar: CRMAppBar(title: 'creamo'),
       body: Stack(
         children: [
           Container(
@@ -69,7 +69,17 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 10),
-                Image.asset('images/creamo_logo.png', height: 150, width: 200),
+                Column(
+                  children: <Widget>[
+                    Image.asset(
+                      'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
+                      height: 80,
+                      width: 600,
+                      fit: BoxFit.fill,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
                 if (!isSwitched) ...[
                   const SizedBox(height: 10),
                   // Use Row for horizontal arrangement
@@ -126,7 +136,8 @@ class _MainPageState extends State<MainPage> {
               ),
               itemCount: AppValues.fileData["levelTitle"].length,
               itemBuilder: (context, index) {
-                return createLevelButtonData(index);
+                int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
+                return createLevelButtonData(newIndex);
               },
               controller: levelScrollController, // 전달받은 컨트롤러 사용
             ),
@@ -138,7 +149,10 @@ class _MainPageState extends State<MainPage> {
 
 
   Widget createLevelButtonData(index) {
-    return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString());
+    return CRMLevelButton(
+      imagePath: 'images/Button_Level/Button_${AppValues.fileData["levelTitle"][categoryIdxs[index]].toString()}.png',
+      level: index
+    );
   }
 
   Widget buildImgButtonPage() {
@@ -184,6 +198,21 @@ class _MainPageState extends State<MainPage> {
         if (RegExp(searchText, caseSensitive: false).hasMatch(title)) {
           categoryIdxs.add(index);
         }
+        /*
+        else{
+          String category = AppValues.fileData["category"][index];
+          if(AppValues.fileData.containsKey("category")){
+            List <String> levels = AppValues.fileData["level"];
+            for (int i = 0; i < levels.length;i++){
+              if (AppValues.fileData[category].containsKey(levels[i]) &&
+                  RegExp(searchText, caseSensitive: false).hasMatch(AppValues.fileData[category][levels[i]]["name"])) {
+                categoryIdxs.add(index);
+                break; // 중복 추가를 방지하기 위해 추가된 카테고리 인덱스 후 루프 종료
+              }
+            }
+          }
+
+        }*/
       });
     }
   }
