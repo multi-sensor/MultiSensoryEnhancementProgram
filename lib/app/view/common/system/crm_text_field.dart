@@ -49,7 +49,7 @@ class CRMTextField extends StatelessWidget {
                   hintStyle: AppTextThemes.inputHintTextStyle,
                   contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
                   border: InputBorder.none,
-                  fillColor: AppColors.white,
+                  fillColor: AppColors.sub2Color,
                   filled: true,
                 ),
                 style: AppTextThemes.inputContentTextStyle,
