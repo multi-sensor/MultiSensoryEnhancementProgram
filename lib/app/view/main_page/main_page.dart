@@ -69,7 +69,17 @@ class _MainPageState extends State<MainPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 10),
-                Image.asset('images/creamo_logo.png', height: 150, width: 200),
+                Column(
+                  children: <Widget>[
+                    Image.asset(
+                      'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
+                      height: 80,
+                      width: 600,
+                      fit: BoxFit.fill,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
                 if (!isSwitched) ...[
                   const SizedBox(height: 10),
                   // Use Row for horizontal arrangement
@@ -139,7 +149,10 @@ class _MainPageState extends State<MainPage> {
 
 
   Widget createLevelButtonData(index) {
-    return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString(), level: index);
+    return CRMLevelButton(
+      imagePath: 'images/Button_Level/Button_${AppValues.fileData["levelTitle"][categoryIdxs[index]].toString()}.png',
+      level: index
+    );
   }
 
   Widget buildImgButtonPage() {

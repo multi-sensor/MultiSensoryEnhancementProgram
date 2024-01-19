@@ -31,6 +31,7 @@ dependencies:
   #버튼 디자인 위해 추가
   getwidget: ^2.0.4
   percent_indicator: ^4.2.3
+  simple_animations: ^5.0.0+2
 
   flutter:
     sdk: flutter
@@ -73,6 +74,7 @@ flutter:
     - images/
     - images/01/
     - images/pictograms/
+    - images/Button_Level/
     - images/01/process/
     - images/가전제품만들기/가전제품만들기_Lv.1/
     - images/가전제품만들기/가전제품만들기_Lv.1+/
@@ -119,6 +121,5 @@ flutter:
       fonts:
         - asset: fonts/Maplestory_Light.ttf
 
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
