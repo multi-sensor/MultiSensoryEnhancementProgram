@@ -12,24 +12,28 @@ class CRMAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.mainColor,
-      title: GestureDetector(
-        onTap: () {
-          Navigator.pushReplacementNamed(context, '/main');
-        },
-        child: Image.asset('images/creamo_logo.png', width: 150, height: 40),
+      title: Center( // Center 위젯 추가
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/main');
+          },
+          child: Image.asset('images/creamo_logo.png', width: 90, height: 130),
+        ),
       ),
 
+
       actions: [
-        IconButton(
-          icon: const Icon(Icons.info_outline_rounded, color: AppColors.blueOrigin),
-          //사용 가이드 버튼
-          onPressed: () {
+        GestureDetector(
+          onTap: () {
             guide(context);
           },
-          color: AppColors.blueOrigin,
-          //물결색상 지정
-          iconSize: 35,
-        ),
+          child: Image.asset(
+            'images/Button_Question.png', // 이미지 경로
+            width: 55,
+            height: 55,
+            // color: AppColors.blueOrigin, // 이미지 색상 지정(필요한 경우)
+          ),
+        )
       ],
       shape: const Border(
         bottom: BorderSide(

@@ -5,10 +5,9 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_tex
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
 class CRMLevelButton extends StatelessWidget {
-  final String title;
+  final String imagePath;
 
-
-  const CRMLevelButton({Key? key, required this.title})
+  const CRMLevelButton({Key? key, required this.imagePath})
       : super(key: key);
 
   @override
@@ -29,14 +28,10 @@ class CRMLevelButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           child: Align(
-            child: CRMText(
-              textContent: title,
-              fontSize: 40,
-              fontStyle: AppTextThemes.cookieRunWhiteStyle
-            ),
+              child: Image.asset(imagePath, width: 1000, height: 1000),
+          )
           ),
         ),
-      ),
-    );
+      );
   }
 }
