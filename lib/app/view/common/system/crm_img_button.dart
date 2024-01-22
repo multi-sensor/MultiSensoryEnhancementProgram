@@ -3,7 +3,7 @@ import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_text_theme.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_colors.dart';
-
+import 'package:flutter/cupertino.dart';
 class CRMImgButton extends StatelessWidget {
   final String title;
   final String imagePath;
@@ -26,42 +26,81 @@ class CRMImgButton extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(30),
             height: 450, width: 500,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub1Color),
+
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub2Color),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, backgroundColor: AppColors.sub2Color,
+                Stack(
+                  children: [
+                    Positioned(
+                      child: Center(
+                        child: CRMText(
+                          textContent: title,
+                          fontSize: 40,
+                          fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                        ),
+                      ),
                     ),
-                    child: const Text('X'),
-                  ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: IconButton(
+                        icon: Icon(CupertinoIcons.xmark_circle),
+                        onPressed: () => Navigator.pop(context),
+                        color: AppColors.redOrigin,
+                        iconSize: 40.0,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 60),
+
                 Expanded(
                   child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 2.0,
+                      childAspectRatio: 2.5,
                     ),
-                    itemCount: AppValues.fileData['levelTitle'].length, // 리스트의 길이를 사용
+                    itemCount: AppValues.fileData['levelTitle'].length,
+
                     itemBuilder: (context, index) {
                       return Container(
                         margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: AppColors.sub2Color,
-                          borderRadius: BorderRadius.circular(30),
+
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: TextButton(
-                          child: CRMText(
-                              textContent: AppValues.fileData['levelTitle'][index] ?? '',
-                              fontSize: 16,// 리스트에서 제목 가져오기
-                              fontStyle: AppTextThemes.cookieRunStyle
+                          style: TextButton.styleFrom(
+                            backgroundColor: AppColors.levelColor[index],
+                            padding: EdgeInsets.only(left: 20, right: 10)
                           ),
-                          onPressed: (){
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CRMText(
+                                    textContent: AppValues.fileData['levelTitle'][index] ?? '',
+                                    fontSize: 10,
+                                    fontStyle: AppTextThemes.cookieRunStyle,
+                                  ),
+                                  CRMText(
+                                    textContent: AppValues.fileData[AppValues.fileData['category'][imageIdx]]
+                                    [AppValues.fileData['level'][index]]['name'] ?? '',
+                                    fontSize: 16,
+                                    fontStyle: AppTextThemes.cookieRunStyle,
+                                  ),
+                                ],
+                              ),
+                              Icon(CupertinoIcons.arrow_right_circle_fill, color: AppColors.white, size: 50),
+                            ],
+                          ),
+                          onPressed: () {
                             Navigator.popAndPushNamed(
                               context,
                               '/contents',
@@ -114,3 +153,4 @@ class CRMImgButton extends StatelessWidget {
     );
   }
 }
+

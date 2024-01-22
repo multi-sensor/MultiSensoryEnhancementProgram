@@ -74,6 +74,13 @@ flutter:
   assets:
     - images/
     - images/01/
+    - images/button/
+    - images/button/button_Level 1.png
+    - images/button/button_Level 2.png
+    - images/button/button_Level 3.png
+    - images/button/button_Level 6.png
+    - images/button/button_Level 5.png
+    - images/button/button_Level 4.png
     - images/pictograms/
     - images/Button_Level/
     - images/01/process/
