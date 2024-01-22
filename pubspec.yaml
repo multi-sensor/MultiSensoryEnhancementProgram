@@ -100,6 +100,7 @@ flutter:
     - images/집만들기/집만들기_Lv.2+/
     - images/집만들기/집만들기_Lv.3/
     - images/집만들기/집만들기_Lv.3+/
+    - images/Button_Level/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
