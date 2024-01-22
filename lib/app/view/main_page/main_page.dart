@@ -18,6 +18,7 @@ class _MainPageState extends State<MainPage> {
   bool isSwitched = false;
   late ScrollController levelScrollController;
   late ScrollController imgScrollController;
+  late TextEditingController textEditingController;
   List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
   String searchText = "";
 
@@ -38,8 +39,9 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    levelScrollController = ScrollController(); // 초기화
-    imgScrollController = ScrollController(); // 초기화
+    levelScrollController = ScrollController();
+    imgScrollController = ScrollController();
+    textEditingController = TextEditingController();
   }
 
   @override
@@ -52,97 +54,84 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CRMAppBar(title: 'creamo'),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/background.png'), // Change to your background image path
-                fit: BoxFit.cover,
-              ),
-            ),
+      appBar: const CRMAppBar(title: 'creamo'),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'), // Change to your background image path
+            fit: BoxFit.cover,
           ),
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 10),
-                Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
-                      height: 80,
-                      width: 600,
-                      fit: BoxFit.fill,
+        ),
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            Image.asset(
+              'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
+              height: 80,
+              width: 600,
+              fit: BoxFit.fill,
+            ),
+            const SizedBox(height: 10),
+            if (!isSwitched) ...[
+              const SizedBox(height: 10),
+              // Use Row for horizontal arrangement
+              CRMTextField(
+                  iconName: Icons.search,
+                  hintText: AppString.str_themeSearch,
+                  keyboardSubmit: _handleSearchText,
+                  controller: textEditingController
+              ),
+            ],
+            if (isSwitched)
+              SizedBox(height: 60),
+            const SizedBox(height: 5),
+            Expanded(
+              child: Stack(
+                children: [
+                  // buildLevelButtonPage() 또는 buildImgButtonPage()
+                  Padding(
+                    padding: EdgeInsets.only(top: 45), // Switch의 높이만큼 여백을 추가
+                    child: isSwitched ? buildLevelButtonPage() : buildImgButtonPage(),
+                  ),
+                  // CupertinoSwitch를 오른쪽 상단에 배치
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: CupertinoSwitch(
+                      value: isSwitched,
+                      onChanged: toggleSwitch,
                     ),
-                    const SizedBox(height: 10),
-                  ],
-                ),
-                if (!isSwitched) ...[
-                  const SizedBox(height: 10),
-                  // Use Row for horizontal arrangement
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CRMTextField(
-                        iconName: Icons.search,
-                        hintText: AppString.str_themeSearch,
-                        onChanged: _handleSearchTextChanged,
-                      ),
-                    ],
                   ),
                 ],
-                if (isSwitched)
-                  SizedBox(height: 60),
-                const SizedBox(height: 5),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 750), // 스위치 위치 조정
-                      child: CupertinoSwitch(
-                        value: isSwitched,
-                        onChanged: toggleSwitch,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    isSwitched ? buildLevelButtonPage() : buildImgButtonPage(),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget buildLevelButtonPage() {
     // Level 페이지 구성
-    return Center(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 800,
-            width: 800,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-                childAspectRatio: 1,
-              ),
-              itemCount: AppValues.fileData["levelTitle"].length,
-              itemBuilder: (context, index) {
-                int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
-                return createLevelButtonData(newIndex);
-              },
-              controller: levelScrollController, // 전달받은 컨트롤러 사용
-            ),
-          ),
-        ],
+    return SizedBox(
+      height: 800,
+      width: 800,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
+          childAspectRatio: 1,
+        ),
+        itemCount: AppValues.fileData["levelTitle"].length,
+        itemBuilder: (context, index) {
+          int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
+          return createLevelButtonData(newIndex);
+        },
+        controller: levelScrollController, // 전달받은 컨트롤러 사용
       ),
     );
   }
@@ -150,30 +139,28 @@ class _MainPageState extends State<MainPage> {
 
   Widget createLevelButtonData(index) {
     return CRMLevelButton(
-      imagePath: 'images/Button_Level/Button_${AppValues.fileData["levelTitle"][categoryIdxs[index]].toString()}.png',
+      imagePath: 'images/Button_Level/Button_${AppValues.fileData["levelTitle"][index].toString()}.png',
       level: index
     );
   }
 
   Widget buildImgButtonPage() {
     // Image 페이지 구성
-    return Center(
-      child: SizedBox(
-        height: 800,
-        width: 800,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1,
-          ),
-          itemCount: categoryIdxs.length,
-          itemBuilder: (context, index) {
-            return createImgButtonData(index);
-          },
-          controller: imgScrollController, // 전달받은 컨트롤러 사용
+    return SizedBox(
+      height: 800,
+      width: 800,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
+          childAspectRatio: 1,
         ),
+        itemCount: categoryIdxs.length,
+        itemBuilder: (context, index) {
+          return createImgButtonData(index);
+        },
+        controller: imgScrollController, // 전달받은 컨트롤러 사용
       ),
     );
   }
@@ -186,34 +173,11 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void _handleSearchTextChanged(String text) {
-    setState(() {
-      searchText = text;
-    });
-    if (searchText.isEmpty) {
-      categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
-    } else {
-      categoryIdxs = [];
-      AppValues.fileData["categoryTitle"].asMap().forEach((index, title) {
-        if (RegExp(searchText, caseSensitive: false).hasMatch(title)) {
-          categoryIdxs.add(index);
-        }
-        /*
-        else{
-          String category = AppValues.fileData["category"][index];
-          if(AppValues.fileData.containsKey("category")){
-            List <String> levels = AppValues.fileData["level"];
-            for (int i = 0; i < levels.length;i++){
-              if (AppValues.fileData[category].containsKey(levels[i]) &&
-                  RegExp(searchText, caseSensitive: false).hasMatch(AppValues.fileData[category][levels[i]]["name"])) {
-                categoryIdxs.add(index);
-                break; // 중복 추가를 방지하기 위해 추가된 카테고리 인덱스 후 루프 종료
-              }
-            }
-          }
-
-        }*/
-      });
-    }
+  void _handleSearchText(String text) {
+    Navigator.pushNamed(
+      context,
+      '/category_search',
+      arguments: {'searchText': text},
+    );
   }
 }

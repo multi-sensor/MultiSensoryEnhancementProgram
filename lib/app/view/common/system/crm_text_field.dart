@@ -8,9 +8,11 @@ class CRMTextField extends StatelessWidget {
   final TextInputAction? action;
   final TextInputType? inputType;
   final bool needHide;
+  final String initialValue;
   void Function(String)? keyboardSubmit;
   void Function(String)? onChanged;
-  CRMTextField({super.key, required this.iconName, this.hintText = "", this.needHide = false, this.action, this.inputType, this.onChanged, this.keyboardSubmit});
+  final TextEditingController controller;
+  CRMTextField({super.key, required this.iconName, this.hintText = "", this.needHide = false, this.action, this.inputType, this.onChanged, this.keyboardSubmit, required this.controller, this.initialValue = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class CRMTextField extends StatelessWidget {
                 autofocus: false,
                 onSubmitted: keyboardSubmit,
                 onChanged: onChanged,
+                controller: controller,
               ),
             ),
           ),
