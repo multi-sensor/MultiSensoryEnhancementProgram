@@ -22,7 +22,7 @@ class CRMImgButton extends StatelessWidget {
         showDialog(
           context: context,
           builder: (context) => Dialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
             child: Container(
               padding: const EdgeInsets.all(30),
               height: 450, width: 500,
@@ -62,7 +62,7 @@ class CRMImgButton extends StatelessWidget {
                               fontStyle: AppTextThemes.cookieRunStyle
                             ),
                             onPressed: (){
-                              Navigator.pushNamed(
+                              Navigator.popAndPushNamed(
                                 context,
                                 '/contents',
                                 arguments: {'level': index, 'category': imageIdx},
@@ -85,29 +85,27 @@ class CRMImgButton extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1, // 정사각형
         child: Container(
-          padding: title == "기차 만들기" ? EdgeInsets.only(left:0.0, right:0.0, bottom: 20.0, top:0.0) : const EdgeInsets.all(20),
+          padding: title == "기차 만들기" ? EdgeInsets.only(left:20.0, right:0.0, bottom: 20.0, top:20.0) : const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end, // 중앙에 정렬
+            mainAxisAlignment: MainAxisAlignment.center, // 중앙에 정렬
             crossAxisAlignment: CrossAxisAlignment.center, // 가로축 중앙에 정렬
             children: <Widget>[
               SizedBox(height:10),
               Expanded(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Image.asset(imagePath),
-              ),
-              ),
-              Padding(
-                padding: title == "기차 만들기" ? EdgeInsets.only(top: 20.0, bottom: 0.0) : const EdgeInsets.all(0),
-                child: CRMText(
-                  textContent: title,
-                  fontSize: 20,
-                  fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                  child: Align(
+                    alignment: title == "기차 만들기" ? Alignment.centerRight : Alignment.center,
+                    child: Image.asset(imagePath),
                 ),
+              ),
+              SizedBox(height: 10),
+              CRMText(
+                textContent: title,
+                fontSize: 20,
+                fontStyle: AppTextThemes.cookieRunWhiteStyle,
               ),
             ],
           ),

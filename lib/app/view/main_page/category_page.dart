@@ -65,34 +65,5 @@ class CategoryPage extends StatelessWidget {
       level: level
     );
   }
-
-
-  Widget ImgButtonPage() {
-    return Scrollbar(
-      child: SizedBox(
-        height: 800, // 고정 높이
-        width: 800, // 고정 너비
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1,
-          ),
-          itemCount: 6,
-          itemBuilder: (BuildContext context, int index) {
-            // 각 아이템에 대해 CRMImgButton을 반환
-            return CRMImgButton(
-              title: AppValues.fileData['categoryTitle'][index].toString(),
-              imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
-              imageIdx: index,
-              needLevel: false,
-              level: level
-            );
-          },
-        ),
-      ),
-    );
-  }
 }
 
