@@ -46,6 +46,7 @@ dependencies:
   get: ^4.6.6
   carousel_slider: ^4.2.1
   photo_view: ^0.14.0
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:

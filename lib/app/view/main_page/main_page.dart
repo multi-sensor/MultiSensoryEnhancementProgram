@@ -6,6 +6,7 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class _MainPageState extends State<MainPage> {
   late TextEditingController textEditingController;
   List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
   String searchText = "";
+  bool status = false;
 
   void toggleSwitch(bool value) {
     setState(() {
@@ -35,6 +37,8 @@ class _MainPageState extends State<MainPage> {
     searchText = "";
     categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
   }
+
+
 
   @override
   void initState() {
@@ -100,9 +104,24 @@ class _MainPageState extends State<MainPage> {
                   Positioned(
                     top: 0,
                     right: 0,
-                    child: CupertinoSwitch(
-                      value: isSwitched,
-                      onChanged: toggleSwitch,
+                    child: FlutterSwitch(
+                      width: 70.0,
+                      height: 30.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 25.0,
+                      value: status,
+                      borderRadius: 15.0,
+                      padding: 4.0,
+                      showOnOff: true,
+                      onToggle: (val) {
+                        setState(() {
+                          status = val;
+                          isSwitched = val; // Update isSwitched when the switch is toggled
+                          toggleSwitch(val); // Call your existing toggleSwitch method
+                        });
+                      },
+                      activeText: '레벨',
+                      inactiveText: '테마',
                     ),
                   ),
                 ],

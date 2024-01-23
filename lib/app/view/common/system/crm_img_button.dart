@@ -26,6 +26,7 @@ class CRMImgButton extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(30),
             height: 450, width: 500,
+
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub2Color),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -54,6 +55,7 @@ class CRMImgButton extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 60),
+
                 Expanded(
                   child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -61,11 +63,13 @@ class CRMImgButton extends StatelessWidget {
                       childAspectRatio: 2.5,
                     ),
                     itemCount: AppValues.fileData['levelTitle'].length,
+
                     itemBuilder: (context, index) {
                       return Container(
                         margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: AppColors.sub2Color,
+
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: TextButton(
@@ -107,7 +111,6 @@ class CRMImgButton extends StatelessWidget {
                       );
                     },
                   ),
-
                 ),
               ],
             ),
@@ -150,3 +153,4 @@ class CRMImgButton extends StatelessWidget {
     );
   }
 }
+
