@@ -103,7 +103,7 @@ class CRMImgButton extends StatelessWidget {
                           onPressed: () {
                             Navigator.popAndPushNamed(
                               context,
-                              '/contents',
+                              '/preview',
                               arguments: {'level': index, 'category': imageIdx},
                             );
                           },

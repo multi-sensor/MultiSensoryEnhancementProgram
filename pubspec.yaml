@@ -31,7 +31,6 @@ dependencies:
   #버튼 디자인 위해 추가
   getwidget: ^2.0.4
   percent_indicator: ^4.2.3
-  simple_animations: ^5.0.0+2
 
   flutter:
     sdk: flutter
@@ -72,17 +71,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
-    - images/01/
-    - images/button/
-    - images/button/button_Level 1.png
-    - images/button/button_Level 2.png
-    - images/button/button_Level 3.png
-    - images/button/button_Level 6.png
-    - images/button/button_Level 5.png
-    - images/button/button_Level 4.png
-    - images/pictograms/
+    - images/Background/
+    - images/Block_Image/
+    - images/Button/
+    - images/CommonUse/
+    - images/Preview_Image/
     - images/Button_Level/
+    - images/01/
+    - images/pictograms/
     - images/01/process/
     - images/가전제품만들기/가전제품만들기_Lv.1/
     - images/가전제품만들기/가전제품만들기_Lv.1+/
@@ -108,7 +104,6 @@ flutter:
     - images/집만들기/집만들기_Lv.2+/
     - images/집만들기/집만들기_Lv.3/
     - images/집만들기/집만들기_Lv.3+/
-    - images/Button_Level/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

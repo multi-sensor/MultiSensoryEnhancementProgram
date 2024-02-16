@@ -82,14 +82,14 @@ class _MainPageState extends State<MainPage> {
             if (!isSwitched) ...[
               const SizedBox(height: 10),
               // Use Row for horizontal arrangement
-              /*
+
               CRMTextField(
                   iconName: Icons.search,
                   hintText: AppString.str_themeSearch,
                   keyboardSubmit: _handleSearchText,
                   controller: textEditingController
               ),
-               */
+
             ],
             if (isSwitched)
               SizedBox(height: 60),

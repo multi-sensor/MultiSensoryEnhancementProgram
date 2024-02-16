@@ -29,6 +29,8 @@ abstract class AppValues {
     "level": ["Lv.1", "Lv.1+", "Lv.2", "Lv.2+", "Lv.3", "Lv.3+"],
     "levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],
 
+    "newLevel": ["Lv1", "Lv1+", "Lv2", "Lv2+", "Lv3", "Lv3+"],
+    "newCategory": ["집", "악기", "가전제품", "공룡"],
     "집만들기": {
       "Lv.1": {
         "imageNumber": 2,
