@@ -1,30 +1,29 @@
-# ?? Multi Sensory Enhancement Program
+#  Multi Sensory Enhancement Program
 
 
 
-## Table of Contents
+## ? Table of Contents
 
+- [Multi Sensory Enhancement Program](#multi-sensory-enhancement-program)
+  - [? Table of Contents](#-table-of-contents)
+  - [?? About our Project](#?-about-our-project)
+  - [? Getting Started](#-getting-started)
+  - [? Introduction to Application features \& code](#-introduction-to-application-features--code)
+  - [? Simulating Applications](#-simulating-applications)
+  - [?? Potential for project Advancement \& Direction](#?-potential-for-project-advancement--direction)
 
-
-- [About our Project](#about-our-project)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 <br>
 
-## About our Project 프로젝트 소개
+## ?? About our Project
 
-- 개발 언어
-- 사용한 프레임워크
-- 개발 기간
-- 참여 인원
-- 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+- Used Language ?? `Dart`
+- Used Framework ?? `Flutter`
+- Used IDE ?? `Andriod Studio` & `Visual Studio Code`
+- Development Period ?? `2024. 01. 01` ~ `2024. 02. 29`
+- Contributed Members ?? `김서인`, `주윤나`, `한아림`
+  
+<br>This table of contents is about building an environment that is essential to the progress of your project.
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
@@ -35,22 +34,7 @@ samples, guidance on mobile development, and a full API reference.
 
 <br>
 
-## Getting Started 환경 구축 설명
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-<br>
-
-## 어플리케이션 기능 및 코드 소개
+## ? Getting Started
 
 This project is a starting point for a Flutter application.
 
@@ -65,7 +49,7 @@ samples, guidance on mobile development, and a full API reference.
 
 <br>
 
-## 어플리케이션 시뮬레이션
+## ? Introduction to Application features & code
 
 This project is a starting point for a Flutter application.
 
@@ -80,7 +64,22 @@ samples, guidance on mobile development, and a full API reference.
 
 <br>
 
-## 향후 기대 사안 및 발전 방향
+## ? Simulating Applications
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+
+<br>
+
+## ?? Potential for project Advancement & Direction
 
 This project is a starting point for a Flutter application.
 
