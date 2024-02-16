@@ -6,11 +6,11 @@
 
 - [Multi Sensory Enhancement Program](#multi-sensory-enhancement-program)
   - [? Table of Contents](#-table-of-contents)
-  - [?? About our Project](#?-about-our-project)
+  - [?? About our Project](#-about-our-project)
   - [? Getting Started](#-getting-started)
   - [? Introduction to Application features \& code](#-introduction-to-application-features--code)
   - [? Simulating Applications](#-simulating-applications)
-  - [?? Potential for project Advancement \& Direction](#?-potential-for-project-advancement--direction)
+  - [?? Potential for project Advancement \& Direction](#-potential-for-project-advancement--direction)
 
 
 <br>
@@ -21,7 +21,7 @@
 - Used Framework ?? `Flutter`
 - Used IDE ?? `Andriod Studio` & `Visual Studio Code`
 - Development Period ?? `2024. 01. 01` ~ `2024. 02. 29`
-- Contributed Members ?? `±Ëº≠¿Œ`, `¡÷¿±≥™`, `«—æ∆∏≤`
+- Contributed Members ?? `Han a Lim`
   
 <br>This table of contents is about building an environment that is essential to the progress of your project.
 
