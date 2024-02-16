@@ -28,8 +28,8 @@ class CRMTextField extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            height: 50,
-            width: 50,// Adjust the padding for icon size
+            height: 48,
+            width: 49,// Adjust the padding for icon size
             decoration: const BoxDecoration(
               color: AppColors.gray300, // Background color for the icon
               borderRadius: BorderRadius.only(
@@ -39,12 +39,20 @@ class CRMTextField extends StatelessWidget {
             ),
             child: Align(alignment: Alignment.center, child: Icon(iconName, color: AppColors.gray500, size: 35)), // Icon color
           ),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
+          Container(
+            width: 349,
+            height: 48,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
                 topRight: Radius.circular(5),
                 bottomRight: Radius.circular(5),
-              ),
+              ), // Makes it circular
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(5),
+                bottomRight: Radius.circular(5),
+              ), // Makes it
               child: TextField(
                 decoration: InputDecoration(
                   hintText: hintText,
