@@ -44,7 +44,7 @@
 
 - [Kim Seoin](https://github.com/seoin0110)
 - [Yunna Joo](https://github.com/YunNa000)
-- [Han a Lim](https://github.com/alimhanhan)
+- [A Lim Han](https://github.com/alimhanhan)
 
 <br>
 
@@ -88,28 +88,28 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Simulating Applications
 
-This project is a starting point for a Flutter application.
+<h3>Application Features</h3>
 
-A few resources to get you started if this is your first Flutter project:
+  1. Lesson Plan Display Features
+  2. Category & Leve; Selection Features
+  3. Ability to zoom in and out of images
+  4. Page Rendering Features
+  5. Content Sliding Features
+  6. Ability to provide hints by level
+  7. Data Search Functionality
+  8. Home Screen Direct Switching
+  9. App User Guide Feature
+  10. Theme & Level Switching
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+<br>video here!!
 <br><br>
 
 ## Potential for project Advancement & Direction
 
-This project is a starting point for a Flutter application.
+The application faces the following future development challenges.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Build Server for Application
+- Arrange for database and server maintenance
+- Build a database management system
+- Reflect DataBase to Application
+- Proceed to develop a new app with a server
