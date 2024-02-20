@@ -120,40 +120,40 @@ MULTISENSORYENHANCEMENTPROGRAM
 <h3>Introduction about File Structure : lib</h3>
 
 ```
-📦lib
- ┣ 📂app
- ┃ ┗ 📂view
- ┃ ┃ ┣ 📂common
- ┃ ┃ ┃ ┣ 📂child
- ┃ ┃ ┃ ┃ ┣ 📜crm_carousel_slider.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_main_content.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_child_profile_button.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_info.dart
- ┃ ┃ ┃ ┃ ┗ 📜crm_img_slide.dart
- ┃ ┃ ┃ ┗ 📂system
- ┃ ┃ ┃ ┃ ┣ 📜crm_text.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_text_button.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_bottom_navigation_bar.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_guide.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_app_bar.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_level_button.dart
- ┃ ┃ ┃ ┃ ┣ 📜crm_text_field.dart
- ┃ ┃ ┃ ┃ ┗ 📜crm_img_button.dart
- ┃ ┃ ┣ 📂theme
- ┃ ┃ ┃ ┣ 📜app_fontweight.dart
- ┃ ┃ ┃ ┣ 📜app_theme.dart
- ┃ ┃ ┃ ┣ 📜app_string.dart
- ┃ ┃ ┃ ┣ 📜app_text_theme.dart~
- ┃ ┃ ┃ ┣ 📜app_text_theme.dart
- ┃ ┃ ┃ ┣ 📜app_colors.dart
- ┃ ┃ ┃ ┗ 📜app_values.dart
- ┃ ┃ ┣ 📂child
- ┃ ┃ ┃ ┗ 📜contents_page.dart
- ┃ ┃ ┗ 📂main_page
- ┃ ┃ ┃ ┣ 📜category_page.dart
- ┃ ┃ ┃ ┣ 📜category_search_page.dart
- ┃ ┃ ┃ ┗ 📜main_page.dart
- ┗ 📜main.dart
+lib
+ ┣ app
+ ┃ ┗ view
+ ┃ ┃ ┣ common
+ ┃ ┃ ┃ ┣ child
+ ┃ ┃ ┃ ┃ ┣ crm_carousel_slider.dart
+ ┃ ┃ ┃ ┃ ┣ crm_main_content.dart
+ ┃ ┃ ┃ ┃ ┣ crm_child_profile_button.dart
+ ┃ ┃ ┃ ┃ ┣ crm_info.dart
+ ┃ ┃ ┃ ┃ ┗ crm_img_slide.dart
+ ┃ ┃ ┃ ┗ system
+ ┃ ┃ ┃ ┃ ┣ crm_text.dart
+ ┃ ┃ ┃ ┃ ┣ crm_text_button.dart
+ ┃ ┃ ┃ ┃ ┣ crm_bottom_navigation_bar.dart
+ ┃ ┃ ┃ ┃ ┣ crm_guide.dart
+ ┃ ┃ ┃ ┃ ┣ crm_app_bar.dart
+ ┃ ┃ ┃ ┃ ┣ crm_level_button.dart
+ ┃ ┃ ┃ ┃ ┣ crm_text_field.dart
+ ┃ ┃ ┃ ┃ ┗ crm_img_button.dart
+ ┃ ┃ ┣ theme
+ ┃ ┃ ┃ ┣ app_fontweight.dart
+ ┃ ┃ ┃ ┣ app_theme.dart
+ ┃ ┃ ┃ ┣ app_string.dart
+ ┃ ┃ ┃ ┣ app_text_theme.dart~
+ ┃ ┃ ┃ ┣ app_text_theme.dart
+ ┃ ┃ ┃ ┣ app_colors.dart
+ ┃ ┃ ┃ ┗ app_values.dart
+ ┃ ┃ ┣ child
+ ┃ ┃ ┃ ┗ contents_page.dart
+ ┃ ┃ ┗ main_page
+ ┃ ┃ ┃ ┣ category_page.dart
+ ┃ ┃ ┃ ┣ category_search_page.dart
+ ┃ ┃ ┃ ┗ main_page.dart
+ ┗ main.dart
 ```
 
 <h3>Introduction about File Structure : fonts</h3>
