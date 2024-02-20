@@ -17,6 +17,7 @@ class CRMImgSlide extends StatefulWidget {
 }
 
 class _CRMImgSlideState extends State<CRMImgSlide> {
+  bool isDialogOpen = false;
   int _current = 0;
   int _currentHintIdx = 0;
   late List<String> _currentHint;
@@ -35,65 +36,148 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
     super.initState();
     categoryName = AppValues.fileData['category'][widget.category];
     levelName = AppValues.fileData['level'][widget.level];
-    finishedImage = 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png';
-    imageName = AppValues.fileData[categoryName][levelName]['name'];
-    hintList = AppValues.fileData[categoryName][levelName]['hints'];
-    imageList = [for (var i = 1; i <= AppValues.fileData[categoryName][levelName]['imageNumber']; i++) 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_$i.png'];
-    imageList.add('images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png');
-    fileList = [for (var i = 1; i <= AppValues.fileData[categoryName][levelName]['imageNumber']; i++) '${categoryName}_${levelName}_$i'];
-    fileList.add('${categoryName}_${levelName}_완성');
+    finishedImage = 'images/Block_Image/${widget.category + 1}. $categoryName/$levelName/complete.png';
+    imageName = AppValues.fileData['content'][widget.category][widget.level]['name'];
+    hintList = AppValues.fileData['content'][widget.category][widget.level]['hints'];
+    imageList = [for (var i = 1; i <= AppValues.fileData['content'][widget.category][widget.level]['imageNumber']; i++) 'images/Block_Image/${widget.category + 1}. $categoryName/$levelName/st$i.png'];
+    imageList.add(finishedImage);
+    fileList = [for (var i = 1; i <= AppValues.fileData['content'][widget.category][widget.level]['imageNumber']; i++) 'st$i'];
+    fileList.add('complete');
 
     setCurrentHint();
+  }
+
+  void showInfo(){
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: MediaQuery.of(context).size.height * 0.8,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.white),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  icon: Icon(CupertinoIcons.xmark_circle),
+                  onPressed: () => Navigator.pop(context),
+                  color: AppColors.redOrigin,
+                  iconSize: 40.0,
+                ),
+              ),
+              Center(
+                child: Image.asset(
+                  finishedImage,
+                  width: MediaQuery.of(context).size.width * 0.7 - 40,
+                  height: MediaQuery.of(context).size.height * 0.7 - 40,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showHint(imgLink){
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: MediaQuery.of(context).size.height * 0.8,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.white),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  icon: Icon(CupertinoIcons.xmark_circle),
+                  onPressed: () => Navigator.pop(context),
+                  color: AppColors.redOrigin,
+                  iconSize: 40.0,
+                ),
+              ),
+              Center(
+                child: Image.asset(
+                  imgLink,
+                  width: MediaQuery.of(context).size.width * 0.7 - 40,
+                  height: MediaQuery.of(context).size.height * 0.7 - 40,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.diagonal3Values(1.0, 3.0, 1.0),
-              child: IconButton(
-                icon:const Icon(CupertinoIcons.arrowtriangle_left_fill),
-                onPressed:decrementIdx,
-                iconSize: 50,
-                color: AppColors.gray400,
-                padding: EdgeInsets.only(right: 10),
-                constraints: BoxConstraints(),
-              ),
-            ),
+
             Container(
-              height: MediaQuery.of(context).size.height*0.7,
-              width: MediaQuery.of(context).size.width*0.5,
+              height: MediaQuery.of(context).size.height*0.9 - 130,
+              width: MediaQuery.of(context).size.width*0.9,
               decoration: BoxDecoration(
                   color: backgroundColor,
                   borderRadius: BorderRadius.circular(30)
               ),
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Stack(
+                    children: [
+                      Positioned(
+                        child: Center(
+                            child: Image.asset("images/Title/${AppValues.fileData['category'][widget.category]}_${AppValues.fileData['level'][widget.level]}_title.png", height: 50, fit: BoxFit.fitHeight)
+                        ),
+                      ),
+                      Positioned(
+                          top: 0,
+                          right: 0,
+                          child: GestureDetector(child: Image.asset("images/Button/button_preview.png", height: 50, fit: BoxFit.fitHeight), onTap: showInfo)
+                      ),
+                    ],
+                  ),
                   guideBar(),
                   const SizedBox(height:10),
-                  Expanded(child: sliderWidget(context))
+                  Row(
+                    children: [
+                      IconButton(
+                        icon:const Icon(CupertinoIcons.chevron_left_circle_fill),
+                        onPressed:decrementIdx,
+                        iconSize: 50,
+                        color: AppColors.white,
+                        padding: EdgeInsets.only(right: 10),
+                        constraints: BoxConstraints(),
+                      ),
+                      Expanded(child: sliderWidget(context)),
+                      IconButton(
+                        icon:const Icon(CupertinoIcons.chevron_right_circle_fill),
+                        onPressed:incrementIdx,
+                        iconSize: 50,
+                        color: AppColors.white,
+                        padding: EdgeInsets.only(left: 10),
+                        constraints: BoxConstraints(),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
-            Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.diagonal3Values(1.0, 3.0, 1.0),
-              child: IconButton(
-                icon:const Icon(CupertinoIcons.arrowtriangle_right_fill),
-                onPressed:incrementIdx,
-                iconSize: 50,
-                color: AppColors.gray400,
-                padding: EdgeInsets.only(left: 10),
-                constraints: BoxConstraints(),
-              ),
-            ),
+
           ],
         ),
         const SizedBox(height:10),
@@ -138,63 +222,35 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   Widget guideBar(){
 
     return _currentHint.isEmpty?
-    Align(alignment: Alignment.centerLeft, child: CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,)):
+    Align(alignment: Alignment.centerLeft, child: Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        Image.asset('images/CommonUse/common_stepbox.png', height: 70, fit: BoxFit.fitHeight),
+        CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+      ],
+    )):
     Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children:[
-          CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
-          TextButton(
-              style: TextButton.styleFrom(minimumSize: Size.zero),
-              child: const CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
-              onPressed: (){
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const CRMText(textContent: AppString.str_hint, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
-                      content: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.8,
-                          child: CarouselSlider(
-                            carouselController: _hintController,
-                            items: _currentHint.map(
-                                  (imgLink) {
-                                return Builder(
-                                  builder: (context) {
-                                    return PhotoView(
-                                      imageProvider: AssetImage(imgLink),
-                                      backgroundDecoration: BoxDecoration(color: backgroundColor),
-                                    );
-                                  },
-                                );
-                              },
-                            ).toList(),
-                            options: CarouselOptions(
-                              enableInfiniteScroll: false,
-                              height: MediaQuery.of(context).size.height*0.5,
-                              viewportFraction: 1.0,
-                              autoPlay: false,
-                              onPageChanged: (index, reason) {
-                                setState(() {
-                                  _currentHintIdx = index;
-                                });
-                              },
-                            ),
-                          )
-                      ),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const CRMText(textContent: AppString.str_close, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle ),
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Dialog 닫기
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
-              }
+          Stack(
+            alignment: AlignmentDirectional.center,
+            children:[
+              Image.asset('images/CommonUse/common_stepbox.png', height: 70, fit: BoxFit.fitHeight),
+              CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+            ]
           ),
+          ...List<Widget>.generate(_currentHint.length, (i) {
+            // i는 0에서 시작하므로, hint 버튼을 위해 i + 1을 사용합니다.
+            return Container(
+              margin: EdgeInsets.only(right: 10),
+              child: GestureDetector(
+                onTap: () {
+                  showHint(_currentHint[i]);
+                },
+                child: Image.asset('images/Button/button_hint${i + 1}.png', height: 50, fit: BoxFit.fitHeight),
+              ),
+            );
+          }),
         ]
     );
 
@@ -230,9 +286,9 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   void setCurrentHint(){
     setState((){
       _currentHint = hintList.where((hint) {
-        return hint.startsWith(fileList[_current]);
+        return hint.startsWith(fileList[_current] + '_');
       }).map((hint) {
-        return 'images/$categoryName/${categoryName}_$levelName/$hint';
+        return 'images/Block_Image/${widget.category + 1}. $categoryName/$levelName/$hint';
       }).toList().cast<String>();
     });
   }
