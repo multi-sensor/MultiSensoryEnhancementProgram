@@ -9,7 +9,8 @@ class ContentsPage extends StatelessWidget {
   final int category;
 
   // 생성자에서 level과 category를 매개변수로 받습니다.
-  const ContentsPage({Key? key, required this.level, required this.category}) : super(key: key);
+  const ContentsPage({Key? key, required this.level, required this.category})
+      : super(key: key);
 
   void goBack(BuildContext context){
     Navigator.pop(context);
