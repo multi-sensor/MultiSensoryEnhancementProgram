@@ -12,7 +12,6 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -20,14 +19,29 @@ class CategoryPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
-            Image.asset('images/creamo_logo.png', height: 150, width: 200),
-            const SizedBox(height: 5),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50),),
+                  Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
+                  GestureDetector(child: Image.asset('images/Button/button_back.png',  width: 50, height: 50), onTap: (){Navigator.pop(context);}),
+                ]
+            ),
+            const SizedBox(height: 20),
+            Image.asset(
+              'images/CommonUse/common_title.png', // 두 번째 이미지 파일 경로
+              height: 80,
+              fit: BoxFit.fitHeight,
+            ),
+            const SizedBox(height: 20),
+            Image.asset('images/Title/title_${AppValues.fileData['level'][level]}.png', height: 80, fit: BoxFit.fitHeight),
+            const SizedBox(height: 20),
             Expanded(child: buildImgButtonPage())
           ],
         ),
@@ -58,8 +72,8 @@ class CategoryPage extends StatelessWidget {
     String categoryName = AppValues.fileData['category'][index].toString();
     String levelName = AppValues.fileData['level'][level].toString();
     return CRMImgButton(
-      title: AppValues.fileData[categoryName][levelName]['name'].toString(),
-      imagePath: 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png',
+      title: AppValues.fileData['content'][index][level]['name'].toString(),
+      imagePath: 'images/Block_Image/${index + 1}. ${categoryName}/${levelName}/complete.png',
       imageIdx: index,
       needLevel: false,
       level: level

@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
   late ScrollController levelScrollController;
   late ScrollController imgScrollController;
   late TextEditingController textEditingController;
-  List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
+  List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["category"].length; i++) i];
   String searchText = "";
   bool status = false;
 
@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
       imgScrollController.jumpTo(0);
     }
     searchText = "";
-    categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
+    categoryIdxs = [for (int i = 0; i < AppValues.fileData["category"].length; i++) i];
   }
 
 
@@ -58,7 +58,6 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CRMAppBar(title: 'creamo'),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -66,17 +65,25 @@ class _MainPageState extends State<MainPage> {
             fit: BoxFit.cover,
           ),
         ),
+        padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50),),
+                  Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
+                  SizedBox(width: 50)
+                ]
+            ),
             const SizedBox(height: 20),
             Image.asset(
-              'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
+              'images/CommonUse/common_title.png', // 두 번째 이미지 파일 경로
               height: 80,
-              width: 600,
-              fit: BoxFit.fill,
+              fit: BoxFit.fitHeight,
             ),
             const SizedBox(height: 10),
             if (!isSwitched) ...[
@@ -147,7 +154,7 @@ class _MainPageState extends State<MainPage> {
           mainAxisSpacing: 15,
           childAspectRatio: 1,
         ),
-        itemCount: AppValues.fileData["levelTitle"].length,
+        itemCount: AppValues.fileData["level"].length,
         itemBuilder: (context, index) {
           int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
           return createLevelButtonData(newIndex);
@@ -160,7 +167,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget createLevelButtonData(index) {
     return CRMLevelButton(
-      imagePath: 'images/Button_Level/Button_${AppValues.fileData["levelTitle"][index].toString()}.png',
+      imagePath: 'images/Button_Level/Button_${AppValues.fileData["level"][index].toString()}.png',
       level: index
     );
   }
@@ -188,7 +195,7 @@ class _MainPageState extends State<MainPage> {
 
   Widget createImgButtonData(index) {
     return CRMImgButton(
-      title: AppValues.fileData["categoryTitle"][categoryIdxs[index]].toString(),
+      title: AppValues.fileData["category"][categoryIdxs[index]].toString() + ' 만들기',
       imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][categoryIdxs[index]].toString()}.png',
       imageIdx: categoryIdxs[index],
     );

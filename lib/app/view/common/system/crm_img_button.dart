@@ -62,7 +62,7 @@ class CRMImgButton extends StatelessWidget {
                       crossAxisCount: 2,
                       childAspectRatio: 2.5,
                     ),
-                    itemCount: AppValues.fileData['levelTitle'].length,
+                    itemCount: AppValues.fileData['level'].length,
 
                     itemBuilder: (context, index) {
                       return Container(
@@ -85,13 +85,12 @@ class CRMImgButton extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CRMText(
-                                    textContent: AppValues.fileData['levelTitle'][index] ?? '',
+                                    textContent: AppValues.fileData['level'][index] ?? '',
                                     fontSize: 10,
                                     fontStyle: AppTextThemes.cookieRunStyle,
                                   ),
                                   CRMText(
-                                    textContent: AppValues.fileData[AppValues.fileData['category'][imageIdx]]
-                                    [AppValues.fileData['level'][index]]['name'] ?? '',
+                                    textContent: AppValues.fileData['content'][imageIdx][index]['name'] ?? '',
                                     fontSize: 16,
                                     fontStyle: AppTextThemes.cookieRunStyle,
                                   ),
@@ -118,7 +117,7 @@ class CRMImgButton extends StatelessWidget {
         ),
       ) : Navigator.pushNamed(
         context,
-        '/contents',
+        '/preview',
         arguments: {'level': level, 'category': imageIdx},
       ),
       child: AspectRatio(

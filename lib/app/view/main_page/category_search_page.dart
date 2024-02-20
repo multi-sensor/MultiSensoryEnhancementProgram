@@ -35,12 +35,13 @@ class _CategorySearchState extends State<CategorySearchPage> {
     }
     else{
       categoryIdxs = [];
-      for (var titleEntry in titles.asMap().entries) {
-        for (var levelEntry in levels.asMap().entries) {
-          if (RegExp(widget.searchText, caseSensitive: false).hasMatch(AppValues.fileData[titleEntry.value][levelEntry.value]['name'])
-              || RegExp(widget.searchText, caseSensitive: false).hasMatch(titleEntry.value)) {
-            categoryIdxs.add([titleEntry.key, levelEntry.key]);
+      for (int i = 0; i < titles.length; i++) {
+        for (int j = 0; j < levels.length; j++) {
+          if (RegExp(widget.searchText, caseSensitive: false).hasMatch(AppValues.fileData['content'][i][j]['name'])
+              || RegExp(widget.searchText, caseSensitive: false).hasMatch(AppValues.fileData['category'][i])){
+            categoryIdxs.add([i, j]);
           }
+
         }
       }
     }
@@ -55,7 +56,6 @@ class _CategorySearchState extends State<CategorySearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -63,17 +63,25 @@ class _CategorySearchState extends State<CategorySearchPage> {
             fit: BoxFit.cover,
           ),
         ),
+        padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50),),
+                  Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
+                  GestureDetector(child: Image.asset('images/Button/button_back.png',  width: 50, height: 50), onTap: (){Navigator.pop(context);}),
+                ]
+            ),
             const SizedBox(height: 20),
             Image.asset(
-              'images/Title_CREAMOADDIBLOCK.png', // 두 번째 이미지 파일 경로
+              'images/CommonUse/common_title.png', // 두 번째 이미지 파일 경로
               height: 80,
-              width: 600,
-              fit: BoxFit.fill,
+              fit: BoxFit.fitHeight,
             ),
             const SizedBox(height: 20),
             CRMTextField(
@@ -115,8 +123,8 @@ class _CategorySearchState extends State<CategorySearchPage> {
     String categoryName = AppValues.fileData['category'][categoryIdx];
     String levelName = AppValues.fileData['level'][levelIdx];
     return CRMImgButton(
-        title: AppValues.fileData[categoryName][levelName]['name'].toString(),
-        imagePath: 'images/$categoryName/${categoryName}_${levelName}/${categoryName}_${levelName}_완성.png',
+        title: AppValues.fileData['content'][categoryIdx][levelIdx]['name'].toString(),
+        imagePath: 'images/Block_Image/${categoryIdx + 1}. ${categoryName}/${levelName}/complete.png',
         imageIdx: categoryIdx,
         needLevel: false,
         level: levelIdx
