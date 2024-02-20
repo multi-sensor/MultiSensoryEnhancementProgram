@@ -31,7 +31,7 @@ abstract class AppTextThemes {
   );
 
   static const TextStyle sliderTitleStyle = TextStyle(
-  color: AppColors.mainColor,
+  color: AppColors.black,
   fontWeight: AppFontWeights.bold,
   );
 
