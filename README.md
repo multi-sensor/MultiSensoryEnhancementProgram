@@ -69,6 +69,20 @@
 For help getting started with Flutter development, view the
 [Dart Lecture](https://www.youtube.com/watch?v=usE9IKaogDU&list=PLfLgtT94nNq1izG4R2WDN517iPX4WXH3C/), or [Dart Official](https://dart.dev/) which offers tutorials.
 
+<br><br>
+
+**How to Run the App :**
+
+Install the flutter packages first, then execute the command below (Compiled files are not uploaded)
+``` bash
+flutter pub get
+```
+
+You can run it as main.dart below.
+``` bash
+flutter run lib/main.dart
+```
+
 <br>
 
 ## 👁️ Introduction to Application features & code
