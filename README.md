@@ -13,7 +13,7 @@
   - [Potential for project Advancement \& Direction](#potential-for-project-advancement--direction)
 
 
-<br>
+<br><br>
 
 ## 🫀 About our Project
 
@@ -46,7 +46,7 @@
 - [Yunna Joo](https://github.com/YunNa000)
 - [A Lim Han](https://github.com/alimhanhan)
 
-<br>
+<br><br>
 
 ## 🧠 Getting Started
 
@@ -83,7 +83,7 @@ You can run it as main.dart below.
 flutter run lib/main.dart
 ```
 
-<br>
+<br><br>
 
 ## 👁️ Introduction to Application features & code
 
@@ -872,7 +872,7 @@ MULTISENSORYENHANCEMENTPROGRAM
 
 + Packages & files that are automatically installed when you set up your environment are not described in detail.
 
-<br>
+<br><br>
 
 ## 👄 Simulating Applications
 
