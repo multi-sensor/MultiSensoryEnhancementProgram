@@ -25,43 +25,43 @@ abstract class AppValues {
     //"category": ["집만들기", "악기만들기", "가전제품만들기", "공룡만들기"],
     //"categoryTitle": ["집 만들기", "악기 만들기", "가전제품 만들기", "공룡 만들기"],
     // "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug'],
-    "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur'],
+    "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug', 'car'],
     //"level": ["Lv.1", "Lv.1+", "Lv.2", "Lv.2+", "Lv.3", "Lv.3+"],
     //"levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],
 
     "level": ["Lv1", "Lv1+", "Lv2", "Lv2+", "Lv3", "Lv3+"],
-    "category": ["기차", "집", "악기", "가전제품", "공룡"],
+    "category": ["기차", "집", "악기", "가전제품", "공룡", "곤충", "바퀴 달린 자동차"],
     "content": [
       [
         {
           "imageNumber": 4,
           "hints": [],
-          "name": "집 1"
+          "name": "꼬마 기차"
         },
         {
           "imageNumber": 4,
           "hints": [],
-          "name": "집 1+"
+          "name": "기차"
         },
         {
           "imageNumber": 6,
-          "hints": [],
-          "name": "집 2"
+          "hints": ["st3_h1.png", "st4_h1.png"],
+          "name": "증기 기차"
         },
         {
           "imageNumber": 9,
           "hints": [],
-          "name": "집 2+"
+          "name": "화물 기차"
         },
         {
           "imageNumber": 10,
-          "hints": [],
-          "name": "집 3"
+          "hints": ["st4_h1.png"],
+          "name": "깃발이 달린 기차"
         },
         {
           "imageNumber": 9,
           "hints": [],
-          "name": "집 3+"
+          "name": "여객 기차"
         }
       ],[
         {
@@ -81,7 +81,7 @@ abstract class AppValues {
         },
         {
           "imageNumber": 7,
-          "hints": ["st2_h2.png", "st4_h2.png"],
+          "hints": ["st2_h1.png", "st4_h1.png"],
           "name": "집 2+"
         },
         {
@@ -186,6 +186,68 @@ abstract class AppValues {
           "imageNumber": 11,
           "hints": ["st4_h1.png", "st8_h1.png", "st11_h1.png", "st11_h2.png","st11_h3.png"],
           "name": "프테라노톤"
+        }
+      ],[
+        {
+          "imageNumber": 4,
+          "hints": [],
+          "name": "번데기"
+        },
+        {
+          "imageNumber": 5,
+          "hints": [],
+          "name": "애벌레"
+        },
+        {
+          "imageNumber": 7,
+          "hints": ["st5_h1.png"],
+          "name": "매미"
+        },
+        {
+          "imageNumber": 9,
+          "hints": ["st8_h1.png", "st9_h1.png"],
+          "name": "잠자리"
+        },
+        {
+          "imageNumber": 13,
+          "hints": ["st8_h1.png", "st9_h1.png"],
+          "name": "사마귀"
+        },
+        {
+          "imageNumber": 13,
+          "hints": ["st6_h1.png", "st6_h2.png", "st6_h3.png", "st9_h1.png"],
+          "name": "사슴벌레"
+        }
+      ],[
+        {
+          "imageNumber": 4,
+          "hints": [],
+          "name": "캠핑카"
+        },
+        {
+          "imageNumber": 7,
+          "hints": ["st3_h1.png"],
+          "name": "경찰차"
+        },
+        {
+          "imageNumber": 12,
+          "hints": ["st2_h1.png", "st9_h1.png"],
+          "name": "2층 버스"
+        },
+        {
+          "imageNumber": 13,
+          "hints": ["st11_h1.png"],
+          "name": "지게차"
+        },
+        {
+          "imageNumber": 16,
+          "hints": [],
+          "name": "굴착기"
+        },
+        {
+          "imageNumber": 15,
+          "hints": ["st3_h1.png", "st6_h1.png", "st7_h1.png", "st7_h2.png", "st11_h1.png", "st11_h2.png"],
+          "name": "덤프트럭"
         }
       ]
     ]
