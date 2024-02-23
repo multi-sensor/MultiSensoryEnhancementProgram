@@ -30,7 +30,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
   final CarouselController _controller = CarouselController();
   final CarouselController _hintController = CarouselController();
   late List<String> imageList;
-  final Color backgroundColor = AppColors.sub1Color;
+  final Color backgroundColor = AppColors.white;
   @override
   void initState() {
     super.initState();
@@ -156,19 +156,19 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                   Row(
                     children: [
                       IconButton(
-                        icon:const Icon(CupertinoIcons.chevron_left_circle_fill),
+                        icon:const Icon(CupertinoIcons.chevron_left_circle),
                         onPressed:decrementIdx,
                         iconSize: 50,
-                        color: AppColors.white,
+                        color: AppColors.black,
                         padding: EdgeInsets.only(right: 10),
                         constraints: BoxConstraints(),
                       ),
                       Expanded(child: sliderWidget(context)),
                       IconButton(
-                        icon:const Icon(CupertinoIcons.chevron_right_circle_fill),
+                        icon:const Icon(CupertinoIcons.chevron_right_circle),
                         onPressed:incrementIdx,
                         iconSize: 50,
-                        color: AppColors.white,
+                        color: AppColors.black,
                         padding: EdgeInsets.only(left: 10),
                         constraints: BoxConstraints(),
                       ),
