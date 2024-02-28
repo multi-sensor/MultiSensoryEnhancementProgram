@@ -49,5 +49,5 @@ abstract class AppColors {
   static const Color purpleOrigin = Color(0xFFD488FF);
   static const Color defaultOrigin = Color(0xFFFFFFFF);
 
-  static const  List<Color> levelColor = [Color(0xFFFF6D64), Color(0xFFFFC70B),  Color(0xFF5ABCFF), Color(0xFFFF9300), Color(0xFF9ECB45), Color(0xFF8378D9)];
+  static const  List<Color> levelColor = [Color(0xFFFF6D64), Color(0xFF9ECB45),  Color(0xFFFF9300), Color(0xFF5ABCFF), Color(0xFFFFC70B), Color(0xFF8378D9)];
 }

@@ -72,7 +72,14 @@ class _CategorySearchState extends State<CategorySearchPage> {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50),),
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50), onTap: (){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("개발 중입니다."),
+                        duration: Duration(seconds: 2), // 메시지 표시 시간 설정
+                      ),
+                    );
+                  }),
                   Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
                   GestureDetector(child: Image.asset('images/Button/button_back.png',  width: 50, height: 50), onTap: (){Navigator.pop(context);}),
                 ]
