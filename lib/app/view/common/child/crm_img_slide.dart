@@ -64,7 +64,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                 child: IconButton(
                   icon: Icon(CupertinoIcons.xmark_circle),
                   onPressed: () => Navigator.pop(context),
-                  color: AppColors.redOrigin,
+                  color: AppColors.orangeColor,
                   iconSize: 40.0,
                 ),
               ),
@@ -99,7 +99,7 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
                 child: IconButton(
                   icon: Icon(CupertinoIcons.xmark_circle),
                   onPressed: () => Navigator.pop(context),
-                  color: AppColors.redOrigin,
+                  color: AppColors.orangeColor,
                   iconSize: 40.0,
                 ),
               ),
@@ -122,69 +122,90 @@ class _CRMImgSlideState extends State<CRMImgSlide> {
     return Column(
       children: [
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            Container(
-              height: MediaQuery.of(context).size.height*0.9 - 130,
-              width: MediaQuery.of(context).size.width*0.9,
-              decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(30)
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        Container(
+          height: MediaQuery.of(context).size.height*0.9 - 130,
+          width: MediaQuery.of(context).size.width*0.9,
+          decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(30)
+          ),
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
                 children: [
-                  Stack(
-                    children: [
-                      Positioned(
-                        child: Center(
-                            child: Image.asset("images/Title/${AppValues.fileData['category'][widget.category]}_${AppValues.fileData['level'][widget.level]}_title.png", height: 50, fit: BoxFit.fitHeight)
-                        ),
-                      ),
-                      Positioned(
-                          top: 0,
-                          right: 0,
-                          child: GestureDetector(child: Image.asset("images/Button/button_preview.png", height: 50, fit: BoxFit.fitHeight), onTap: showInfo)
-                      ),
-                    ],
+                  Positioned(
+                    child: Center(
+                        child: Image.asset("images/Title/${AppValues.fileData['category'][widget.category]}_${AppValues.fileData['level'][widget.level]}_title.png", height: 50, fit: BoxFit.fitHeight)
+                    ),
                   ),
-                  guideBar(),
-                  const SizedBox(height:10),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon:const Icon(CupertinoIcons.chevron_left_circle),
-                        onPressed:decrementIdx,
-                        iconSize: 50,
-                        color: AppColors.black,
-                        padding: EdgeInsets.only(right: 10),
-                        constraints: BoxConstraints(),
-                      ),
-                      Expanded(child: sliderWidget(context)),
-                      IconButton(
-                        icon:const Icon(CupertinoIcons.chevron_right_circle),
-                        onPressed:incrementIdx,
-                        iconSize: 50,
-                        color: AppColors.black,
-                        padding: EdgeInsets.only(left: 10),
-                        constraints: BoxConstraints(),
-                      ),
-                    ],
-                  )
+                  Positioned(
+                      top: 0,
+                      right: 0,
+                      child: GestureDetector(child: Image.asset("images/Button/button_preview.png", height: 50, fit: BoxFit.fitHeight), onTap: showInfo)
+                  ),
                 ],
               ),
-            ),
-
-          ],
+              guideBar(),
+              const SizedBox(height:10),
+              Row(
+                children: [
+                  IconButton(
+                    icon:const Icon(CupertinoIcons.chevron_left_circle),
+                    onPressed:decrementIdx,
+                    iconSize: 50,
+                    color: AppColors.black,
+                    padding: EdgeInsets.only(right: 10),
+                    constraints: BoxConstraints(),
+                  ),
+                  Expanded(child: sliderWidget(context)),
+                  IconButton(
+                    icon:const Icon(CupertinoIcons.chevron_right_circle),
+                    onPressed:incrementIdx,
+                    iconSize: 50,
+                    color: AppColors.black,
+                    padding: EdgeInsets.only(left: 10),
+                    constraints: BoxConstraints(),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
         const SizedBox(height:10),
         Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [for (var i = 0; i < imageList.length;i++) TextButton(child: Text("${i+1}", style: TextStyle(color: i == _current? AppColors.orangeOrigin : AppColors.gray400, fontSize: 20, fontWeight: FontWeight.bold)), onPressed:() => setIdx(i))].toList()
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var i = 0; i < imageList.length; i++)
+              Padding(
+                padding: const EdgeInsets.all(5.0), // 버튼 간 간격을 주기 위한 패딩
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: i == _current ? AppColors.gray700 : AppColors.gray100, // 선택된 항목과 그렇지 않은 항목의 배경색
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8), // 모서리 둥근 정도
+                    ),
+                    minimumSize: Size(35, 35), // 버튼의 최소 크기를 설정하여 정사각형 모양 유지
+                    maximumSize: Size(35, 35),
+                    fixedSize: Size(33, 33),
+                  ),
+                  onPressed: () => setIdx(i),
+                  child: Text(
+                    "${i + 1}",
+                    style: TextStyle(
+                      fontFamily: 'Maplestory',
+                      color: i == _current ? AppColors.white: AppColors.gray500, // 텍스트 색상
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+          ].toList(),
         )
+
+
       ],
     );
   }
