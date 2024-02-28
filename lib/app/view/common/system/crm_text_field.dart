@@ -12,70 +12,69 @@ class CRMTextField extends StatelessWidget {
   void Function(String)? keyboardSubmit;
   void Function(String)? onChanged;
   final TextEditingController controller;
-  CRMTextField({super.key, required this.iconName, this.hintText = "", this.needHide = false, this.action, this.inputType, this.onChanged, this.keyboardSubmit, required this.controller, this.initialValue = ""});
+
+  CRMTextField({
+    super.key,
+    required this.iconName,
+    this.hintText = "테마검색", // 변경된 힌트 텍스트
+    this.needHide = false,
+    this.action,
+    this.inputType,
+    this.onChanged,
+    this.keyboardSubmit,
+    required this.controller,
+    this.initialValue = "",
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      width: 500, // 검색창의 너비
+      height: 50, // 검색창의 높이
       decoration: BoxDecoration(
-        color: AppColors.sub2Color,
-        border: Border.all(color: AppColors.gray500),
-        borderRadius: BorderRadius.circular(5), // Adjust for desired rounding
-      ),
-      width: 400,
-      height: 50,
-      child: Row(
-        children: <Widget>[
-          Container(
-            height: 48,
-            width: 49,// Adjust the padding for icon size
-            decoration: const BoxDecoration(
-              color: AppColors.gray300, // Background color for the icon
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                bottomLeft: Radius.circular(5),
-              ), // Makes it circular
-            ),
-            child: Align(alignment: Alignment.center, child: Icon(iconName, color: AppColors.gray500, size: 35)), // Icon color
-          ),
-          Container(
-            width: 349,
-            height: 48,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(5),
-                bottomRight: Radius.circular(5),
-              ), // Makes it circular
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(5),
-                bottomRight: Radius.circular(5),
-              ), // Makes it
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: hintText,
-                  hintStyle: AppTextThemes.inputHintTextStyle,
-                  contentPadding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
-                  border: InputBorder.none,
-                  fillColor: AppColors.white,
-                  filled: true,
-                ),
-                style: AppTextThemes.inputContentTextStyle,
-                textInputAction: action,
-                keyboardType: inputType,
-                obscureText: needHide,
-                autofocus: false,
-                onSubmitted: keyboardSubmit,
-                onChanged: onChanged,
-                controller: controller,
-              ),
-            ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 7,
+            offset: Offset(0, 3),
           ),
         ],
       ),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.black, fontSize: 14), // 글씨체 크기 조정
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide.none,
+          ),
+          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 20), // 여백 조정
+          suffixIcon: Container(
+            padding: EdgeInsets.only(right: 10), // 아이콘 우측 패딩 조정
+            child: Row(
+              mainAxisSize: MainAxisSize.min, // 아이콘을 오른쪽 끝에 정렬
+              children: <Widget>[
+                Text('|', style: TextStyle(color: AppColors.gray400, fontSize: 24)), // 텍스트 크기 조정
+                SizedBox(width: 8), // 아이콘과의 간격 추가
+                Icon(iconName, color: AppColors.gray400, size: 24), // 아이콘 크기 조정
+              ],
+            ),
+          ),
+        ),
+        style: AppTextThemes.inputContentTextStyle,
+        textInputAction: action,
+        keyboardType: inputType,
+        obscureText: needHide,
+        autofocus: false,
+        onSubmitted: keyboardSubmit,
+        onChanged: onChanged,
+      ),
     );
   }
-
 }
