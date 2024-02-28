@@ -18,7 +18,6 @@ abstract class AppValues {
   // static const int defaultPageNumber = 1;
   // static const int defaultDebounceTimeInMilliSeconds = 1000;
   // static const int defaultThrottleTimeInMilliSeconds = 500;
-
   static const  Map<String, dynamic> fileData = {
     "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug', 'car'],
     "levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],

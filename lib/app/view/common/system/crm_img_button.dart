@@ -137,7 +137,7 @@ class CRMImgButton extends StatelessWidget {
           padding: title == "기차 만들기" ? EdgeInsets.only(left:20.0, right:0.0, bottom: 20.0, top:20.0) : const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: AppColors.white,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(5),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // 중앙에 정렬
