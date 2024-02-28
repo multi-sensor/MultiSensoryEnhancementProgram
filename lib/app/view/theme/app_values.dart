@@ -80,7 +80,7 @@ abstract class AppValues {
         },
         {
           "imageNumber": 7,
-          "hints": ["st2_h1.png", "st6_h1.png", "st6_h2.png", "st5_h2.png"],
+          "hints": ["st2_h1.png", "st6_h1.png", "st6_h2.png"],
           "name": "집 3"
         },
         {
@@ -137,12 +137,12 @@ abstract class AppValues {
         },
         {
           "imageNumber": 10,
-          "hints": ["st1_h1.png", "st2_h1.png", "st2_h2.png", "st5_h1.png", "st5_h2.png", "st8_h1.png"],
+          "hints": ["st1_h1.png", "st2_h1.png", "st5_h1.png", "st8_h1.png"],
           "name": "믹서기"
         },
         {
           "imageNumber": 6,
-          "hints": ["st2_h1.png", "st3_h1.png", "st5_h1.png", "st5_h2.png"],
+          "hints": ["st2_h1.png", "st3_h1.png", "st5_h1.png"],
           "name": "헤어 드라이어"
         },
         {
@@ -173,7 +173,7 @@ abstract class AppValues {
         },
         {
           "imageNumber": 12,
-          "hints": ["st7_h1.png", "st7_h2.png", "st7_h3.png", "st8_h1.png","st9_h1.png"],
+          "hints": ["st7_h1.png", "st7_h2.png", "st8_h1.png","st9_h1.png"],
           "name": "트리케라톱스"
         },
         {
