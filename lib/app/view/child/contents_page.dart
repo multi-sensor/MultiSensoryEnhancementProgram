@@ -157,7 +157,11 @@ class _ContentsPageState extends State<ContentsPage>{
                     margin: const EdgeInsets.fromLTRB(35, 50, 35, 0),
                     decoration: BoxDecoration(
                         color: AppColors.lvBackgroundColor[widget.level],
-                        borderRadius: BorderRadius.circular(30)
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: AppColors.lvBorderColor[widget.level],
+                          width: 5.0, // 테두리 두께 설정
+                        ),
                     ),
                   ),
                   Container(
