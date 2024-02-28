@@ -78,48 +78,48 @@ flutter:
     - images/Button_Level/
     - images/pictograms/
     - images/Title/
-    - images/Block_Image/1. 기차/Lv1/
-    - images/Block_Image/1. 기차/Lv1+/
-    - images/Block_Image/1. 기차/Lv2/
-    - images/Block_Image/1. 기차/Lv2+/
-    - images/Block_Image/1. 기차/Lv3/
-    - images/Block_Image/1. 기차/Lv3+/
-    - images/Block_Image/2. 집/Lv1/
-    - images/Block_Image/2. 집/Lv1+/
-    - images/Block_Image/2. 집/Lv2/
-    - images/Block_Image/2. 집/Lv2+/
-    - images/Block_Image/2. 집/Lv3/
-    - images/Block_Image/2. 집/Lv3+/
-    - images/Block_Image/3. 악기/Lv1/
-    - images/Block_Image/3. 악기/Lv1+/
-    - images/Block_Image/3. 악기/Lv2/
-    - images/Block_Image/3. 악기/Lv2+/
-    - images/Block_Image/3. 악기/Lv3/
-    - images/Block_Image/3. 악기/Lv3+/
-    - images/Block_Image/4. 가전제품/Lv1/
-    - images/Block_Image/4. 가전제품/Lv1+/
-    - images/Block_Image/4. 가전제품/Lv2/
-    - images/Block_Image/4. 가전제품/Lv2+/
-    - images/Block_Image/4. 가전제품/Lv3/
-    - images/Block_Image/4. 가전제품/Lv3+/
-    - images/Block_Image/5. 공룡/Lv1/
-    - images/Block_Image/5. 공룡/Lv1+/
-    - images/Block_Image/5. 공룡/Lv2/
-    - images/Block_Image/5. 공룡/Lv2+/
-    - images/Block_Image/5. 공룡/Lv3/
-    - images/Block_Image/5. 공룡/Lv3+/
-    - images/Block_Image/6. 곤충/Lv1/
-    - images/Block_Image/6. 곤충/Lv1+/
-    - images/Block_Image/6. 곤충/Lv2/
-    - images/Block_Image/6. 곤충/Lv2+/
-    - images/Block_Image/6. 곤충/Lv3/
-    - images/Block_Image/6. 곤충/Lv3+/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv1/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv1+/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv2/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv2+/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv3/
-    - images/Block_Image/7. 바퀴 달린 자동차/Lv3+/
+    - images/Block_Image/1. 기차/lv1/
+    - images/Block_Image/1. 기차/lv1+/
+    - images/Block_Image/1. 기차/lv2/
+    - images/Block_Image/1. 기차/lv2+/
+    - images/Block_Image/1. 기차/lv3/
+    - images/Block_Image/1. 기차/lv3+/
+    - images/Block_Image/2. 집/lv1/
+    - images/Block_Image/2. 집/lv1+/
+    - images/Block_Image/2. 집/lv2/
+    - images/Block_Image/2. 집/lv2+/
+    - images/Block_Image/2. 집/lv3/
+    - images/Block_Image/2. 집/lv3+/
+    - images/Block_Image/3. 악기/lv1/
+    - images/Block_Image/3. 악기/lv1+/
+    - images/Block_Image/3. 악기/lv2/
+    - images/Block_Image/3. 악기/lv2+/
+    - images/Block_Image/3. 악기/lv3/
+    - images/Block_Image/3. 악기/lv3+/
+    - images/Block_Image/4. 가전제품/lv1/
+    - images/Block_Image/4. 가전제품/lv1+/
+    - images/Block_Image/4. 가전제품/lv2/
+    - images/Block_Image/4. 가전제품/lv2+/
+    - images/Block_Image/4. 가전제품/lv3/
+    - images/Block_Image/4. 가전제품/lv3+/
+    - images/Block_Image/5. 공룡/lv1/
+    - images/Block_Image/5. 공룡/lv1+/
+    - images/Block_Image/5. 공룡/lv2/
+    - images/Block_Image/5. 공룡/lv2+/
+    - images/Block_Image/5. 공룡/lv3/
+    - images/Block_Image/5. 공룡/lv3+/
+    - images/Block_Image/6. 곤충/lv1/
+    - images/Block_Image/6. 곤충/lv1+/
+    - images/Block_Image/6. 곤충/lv2/
+    - images/Block_Image/6. 곤충/lv2+/
+    - images/Block_Image/6. 곤충/lv3/
+    - images/Block_Image/6. 곤충/lv3+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv1/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv1+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv2/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv2+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv3/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv3+/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

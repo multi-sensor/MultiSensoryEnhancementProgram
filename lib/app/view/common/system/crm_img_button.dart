@@ -38,7 +38,7 @@ class CRMImgButton extends StatelessWidget {
                         child: CRMText(
                           textContent: title,
                           fontSize: 40,
-                          fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                          fontStyle: AppTextThemes.cookieRunOrangeStyle,
                         ),
                       ),
                     ),
@@ -48,7 +48,7 @@ class CRMImgButton extends StatelessWidget {
                       child: IconButton(
                         icon: Icon(CupertinoIcons.xmark_circle),
                         onPressed: () => Navigator.pop(context),
-                        color: AppColors.redOrigin,
+                        color: AppColors.orangeColor,
                         iconSize: 40.0,
                       ),
                     ),
@@ -69,32 +69,35 @@ class CRMImgButton extends StatelessWidget {
                         margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: AppColors.sub2Color,
-
-                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: TextButton(
                           style: TextButton.styleFrom(
                             backgroundColor: AppColors.levelColor[index],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
                             padding: EdgeInsets.only(left: 20, right: 10)
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CRMText(
-                                    textContent: AppValues.fileData['level'][index] ?? '',
-                                    fontSize: 10,
-                                    fontStyle: AppTextThemes.cookieRunStyle,
-                                  ),
-                                  CRMText(
-                                    textContent: AppValues.fileData['content'][imageIdx][index]['name'] ?? '',
-                                    fontSize: 16,
-                                    fontStyle: AppTextThemes.cookieRunStyle,
-                                  ),
-                                ],
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    CRMText(
+                                      textContent: AppValues.fileData['levelTitle'][index] ?? '',
+                                      fontSize: 12,
+                                      fontStyle: AppTextThemes.MaplestoryWhiteStyle,
+                                    ),
+                                    CRMText(
+                                      textContent: AppValues.fileData['content'][imageIdx][index]['name'] ?? '',
+                                      fontSize: 17,
+                                      fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                                    ),
+                                  ],
+                                ),
                               ),
                               Icon(CupertinoIcons.arrow_right_circle_fill, color: AppColors.white, size: 50),
                             ],
