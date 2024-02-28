@@ -7,6 +7,8 @@ abstract class AppColors {
   static const Color sub1Color = Color(0xfffad993);
   static const Color sub2Color = Color(0xfff6f1ed);
 
+  static const Color orangeColor = Color(0xFFFE6845);
+
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
 

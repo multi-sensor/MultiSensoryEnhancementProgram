@@ -20,16 +20,10 @@ abstract class AppValues {
   // static const int defaultThrottleTimeInMilliSeconds = 500;
 
   static const  Map<String, dynamic> fileData = {
-    // "category": ["기차만들기", "집만들기", "악기만들기", "가전제품만들기", "공룡만들기", "곤충만들기"],
-    // "categoryTitle": ["기차 만들기", "집 만들기", "악기 만들기", "가전제품 만들기", "공룡 만들기", "곤충 만들기"],
-    //"category": ["집만들기", "악기만들기", "가전제품만들기", "공룡만들기"],
-    //"categoryTitle": ["집 만들기", "악기 만들기", "가전제품 만들기", "공룡 만들기"],
-    // "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug'],
     "pictograms": ['train', 'home', 'instrument', 'HomeAppliance', 'dinosaur', 'Bug', 'car'],
-    //"level": ["Lv.1", "Lv.1+", "Lv.2", "Lv.2+", "Lv.3", "Lv.3+"],
-    //"levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],
+    "levelTitle": ["Level 1", "Level 1+", "Level 2", "Level 2+", "Level 3", "Level 3+"],
 
-    "level": ["Lv1", "Lv1+", "Lv2", "Lv2+", "Lv3", "Lv3+"],
+    "level": ["lv1", "lv1+", "lv2", "lv2+", "lv3", "lv3+"],
     "category": ["기차", "집", "악기", "가전제품", "공룡", "곤충", "바퀴 달린 자동차"],
     "content": [
       [

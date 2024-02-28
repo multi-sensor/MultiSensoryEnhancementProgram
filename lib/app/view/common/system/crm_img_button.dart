@@ -23,96 +23,96 @@ class CRMImgButton extends StatelessWidget {
         context: context,
         builder: (context) => Dialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-          child: Container(
-            padding: const EdgeInsets.all(30),
-            height: 450, width: 500,
+          child: Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(30),
+                height: 400, width: 500,
 
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub2Color),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub2Color),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Positioned(
-                      child: Center(
-                        child: CRMText(
-                          textContent: title,
-                          fontSize: 40,
-                          fontStyle: AppTextThemes.cookieRunWhiteStyle,
-                        ),
+                    Center(
+                      child: CRMText(
+                        textContent: title,
+                        fontSize: 40,
+                        fontStyle: AppTextThemes.cookieRunOrangeStyle,
                       ),
                     ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: IconButton(
-                        icon: Icon(CupertinoIcons.xmark_circle),
-                        onPressed: () => Navigator.pop(context),
-                        color: AppColors.redOrigin,
-                        iconSize: 40.0,
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 2.5,
+                        ),
+                        itemCount: AppValues.fileData['level'].length,
+
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: AppColors.sub2Color,
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: AppColors.levelColor[index],
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                padding: EdgeInsets.only(left: 20, right: 10)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        CRMText(
+                                          textContent: AppValues.fileData['levelTitle'][index] ?? '',
+                                          fontSize: 12,
+                                          fontStyle: AppTextThemes.MaplestoryWhiteStyle,
+                                        ),
+                                        CRMText(
+                                          textContent: AppValues.fileData['content'][imageIdx][index]['name'] ?? '',
+                                          fontSize: 17,
+                                          fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(CupertinoIcons.arrow_right_circle_fill, color: AppColors.white, size: 50),
+                                ],
+                              ),
+                              onPressed: () {
+                                Navigator.popAndPushNamed(
+                                  context,
+                                  '/preview',
+                                  arguments: {'level': index, 'category': imageIdx},
+                                );
+                              },
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 60),
-
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 2.5,
-                    ),
-                    itemCount: AppValues.fileData['level'].length,
-
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: AppColors.sub2Color,
-
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: AppColors.levelColor[index],
-                            padding: EdgeInsets.only(left: 20, right: 10)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CRMText(
-                                    textContent: AppValues.fileData['level'][index] ?? '',
-                                    fontSize: 10,
-                                    fontStyle: AppTextThemes.cookieRunStyle,
-                                  ),
-                                  CRMText(
-                                    textContent: AppValues.fileData['content'][imageIdx][index]['name'] ?? '',
-                                    fontSize: 16,
-                                    fontStyle: AppTextThemes.cookieRunStyle,
-                                  ),
-                                ],
-                              ),
-                              Icon(CupertinoIcons.arrow_right_circle_fill, color: AppColors.white, size: 50),
-                            ],
-                          ),
-                          onPressed: () {
-                            Navigator.popAndPushNamed(
-                              context,
-                              '/preview',
-                              arguments: {'level': index, 'category': imageIdx},
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  icon: Icon(CupertinoIcons.xmark_circle),
+                  onPressed: () => Navigator.pop(context),
+                  color: AppColors.orangeColor,
+                  iconSize: 40.0,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ) : Navigator.pushNamed(
@@ -143,7 +143,7 @@ class CRMImgButton extends StatelessWidget {
               CRMText(
                 textContent: title,
                 fontSize: 20,
-                fontStyle: AppTextThemes.cookieRunWhiteStyle,
+                fontStyle: AppTextThemes.cookieRunStyle,
               ),
             ],
           ),
