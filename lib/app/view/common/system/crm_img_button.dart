@@ -22,14 +22,25 @@ class CRMImgButton extends StatelessWidget {
       showDialog(
         context: context,
         builder: (context) => Dialog(
+          elevation: 8, // 그림자의 깊이 조절
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           child: Stack(
             children: [
               Container(
                 padding: const EdgeInsets.all(30),
                 height: 400, width: 500,
-
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.0), color: AppColors.sub2Color),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.0),
+                  color: AppColors.sub2Color,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5), // 그림자 색상 및 불투명도
+                      spreadRadius: 5, // 그림자 확산 정도
+                      blurRadius: 9, // 그림자의 흐림 정도
+                      offset: Offset(0, 3), // 그림자의 위치
+                    ),
+                  ],
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -48,7 +59,6 @@ class CRMImgButton extends StatelessWidget {
                           childAspectRatio: 2.5,
                         ),
                         itemCount: AppValues.fileData['level'].length,
-
                         itemBuilder: (context, index) {
                           return Container(
                             margin: const EdgeInsets.all(10),
@@ -57,11 +67,11 @@ class CRMImgButton extends StatelessWidget {
                             ),
                             child: TextButton(
                               style: TextButton.styleFrom(
-                                backgroundColor: AppColors.levelColor[index],
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                padding: EdgeInsets.only(left: 20, right: 10)
+                                  backgroundColor: AppColors.levelColor[index],
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  padding: EdgeInsets.only(left: 20, right: 10)
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,7 +125,8 @@ class CRMImgButton extends StatelessWidget {
             ],
           ),
         ),
-      ) : Navigator.pushNamed(
+      )
+      : Navigator.pushNamed(
         context,
         '/preview',
         arguments: {'level': level, 'category': imageIdx},
