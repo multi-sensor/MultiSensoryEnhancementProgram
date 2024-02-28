@@ -254,13 +254,12 @@ class _ContentsPageState extends State<ContentsPage>{
                 ],
               ),
             ),
-            const SizedBox(height:10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 for (var i = 0; i < imageList.length; i++)
                   Padding(
-                    padding: const EdgeInsets.all(5.0), // 버튼 간 간격을 주기 위한 패딩
+                    padding: const EdgeInsets.all(3.0), // 버튼 간 간격을 주기 위한 패딩
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: i == _current ? AppColors.gray700 : AppColors.gray100, // 선택된 항목과 그렇지 않은 항목의 배경색
