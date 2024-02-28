@@ -80,13 +80,13 @@ class _PreviewPageState extends State<PreviewPage> {
   }
 
   Widget previewImage(){
-    return Image.asset('images/Preview_Image/${AppValues.fileData["category"][widget.category]}_${AppValues.fileData["level"][widget.level]}_previewimage.png', width: 500, height: 500);
+    return Expanded(child: Image.asset('images/Preview_Image/${AppValues.fileData["category"][widget.category]}_${AppValues.fileData["level"][widget.level]}_previewimage.png', width: 500, height: 500));
   }
 
   List<Widget> completeImage(){
     return [
-      Image.asset('images/Title/${AppValues.fileData["category"][widget.category]}_${AppValues.fileData["level"][widget.level]}_title.png', height: 100, fit: BoxFit.fitHeight),
-      Image.asset('images/Block_Image/${widget.category + 1}. ${AppValues.fileData["category"][widget.category]}/${AppValues.fileData["level"][widget.level]}/complete_shadow.png', width: 400, height: 400, fit: BoxFit.fitHeight)
+      Expanded(flex: 1, child: Image.asset('images/Title/${AppValues.fileData["category"][widget.category]}_${AppValues.fileData["level"][widget.level]}_title.png')),
+      Expanded(flex: 6, child: Image.asset('images/Block_Image/${widget.category + 1}. ${AppValues.fileData["category"][widget.category]}/${AppValues.fileData["level"][widget.level]}/complete_shadow.png'))
     ];
   }
 }

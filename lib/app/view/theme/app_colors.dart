@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 //앱 내 색을 정의하는 공간. 사용할 색 여기 정의해주세요
 abstract class AppColors {
+  static const List<Color> lvBackgroundColor = [Color(0xfffff7f7), Color(0xfff7faf0), Color(0xfffef6ed), Color(0xffe9f2f6), Color(0xfffef6e4), Color(0xfff7f7ff)];
+  static const List<Color> lvBorderColor = [Color(0xffffbdbd), Color(0xffcfdd94), Color(0xffffc48f), Color(0xffabcbd6), Color(0xffffce76), Color(0xffcacae0)];
+  static const List<Color> lvArrowColor = [Color(0xffff514d), Color(0xff89af2c), Color(0xfffe6845), Color(0xff4093c1), Color(0xffffae0d), Color(0xff534fa8)];
+  static const List<Color> lvArrowShadowColor = [Color(0xffff505d), Color(0xff59ad23), Color(0xfff49d56), Color(0xff576091), Color(0xfff2b657), Color(0xff735893)];
+
 
   static const Color mainColor = Color(0xffffa147);
   static const Color sub1Color = Color(0xfffad993);
@@ -44,5 +49,5 @@ abstract class AppColors {
   static const Color purpleOrigin = Color(0xFFD488FF);
   static const Color defaultOrigin = Color(0xFFFFFFFF);
 
-  static const  List<Color> levelColor = [Color(0xFFFF6D64), Color(0xFFFFC70B),  Color(0xFF5ABCFF), Color(0xFFFF9300), Color(0xFF9ECB45), Color(0xFF8378D9)];
+  static const  List<Color> levelColor = [Color(0xFFFF6D64), Color(0xFF9ECB45),  Color(0xFFFF9300), Color(0xFF5ABCFF), Color(0xFFFFC70B), Color(0xFF8378D9)];
 }

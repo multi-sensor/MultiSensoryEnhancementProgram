@@ -179,7 +179,7 @@ abstract class AppValues {
         {
           "imageNumber": 11,
           "hints": ["st4_h1.png", "st8_h1.png", "st11_h1.png", "st11_h2.png","st11_h3.png"],
-          "name": "프테라노톤"
+          "name": "프테라노돈"
         }
       ],[
         {
