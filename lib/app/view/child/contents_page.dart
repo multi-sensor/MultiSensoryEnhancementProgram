@@ -333,13 +333,13 @@ class _ContentsPageState extends State<ContentsPage>{
     Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children:[
-          Stack(
-              alignment: AlignmentDirectional.center,
-              children:[
-                Image.asset('images/CommonUse/common_stepbox.png', height: 70, fit: BoxFit.fitHeight),
-                CRMText(textContent: _current != imageList.length -1? 'STEP ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.cookieRunStyle,),
-              ]
-          ),
+          Align(alignment: Alignment.centerLeft, child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              Image.asset('images/CommonUse/common_stepbox.png', height: 70, fit: BoxFit.fitHeight),
+              CRMText(textContent: _current != imageList.length -1? 'STEP ${_current + 1}  ' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.cookieRunStyle,),
+            ],
+          )),
           ...List<Widget>.generate(_currentHint.length, (i) {
             // i는 0에서 시작하므로, hint 버튼을 위해 i + 1을 사용합니다.
             return Container(

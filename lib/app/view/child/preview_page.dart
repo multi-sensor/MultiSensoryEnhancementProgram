@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_app_bar.dart';
-import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_img_slide.dart';
 import 'package:multi_sensory_enhancement_program/app/view/common/child/crm_info.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
 class PreviewPage extends StatefulWidget {
