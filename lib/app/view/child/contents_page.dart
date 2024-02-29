@@ -337,7 +337,7 @@ class _ContentsPageState extends State<ContentsPage>{
               alignment: AlignmentDirectional.center,
               children:[
                 Image.asset('images/CommonUse/common_stepbox.png', height: 70, fit: BoxFit.fitHeight),
-                CRMText(textContent: _current != imageList.length -1? 'Step ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.sliderTitleStyle,),
+                CRMText(textContent: _current != imageList.length -1? 'STEP ${_current + 1}' : AppString.str_finish, fontSize: 20, fontStyle: AppTextThemes.cookieRunStyle,),
               ]
           ),
           ...List<Widget>.generate(_currentHint.length, (i) {
