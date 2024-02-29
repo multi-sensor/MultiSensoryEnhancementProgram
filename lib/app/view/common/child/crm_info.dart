@@ -34,8 +34,8 @@ class _CRMInfoState extends State<CRMInfo> {
     // categoryName = AppValues.fileData['category'][widget.category];
     categoryName = AppValues.fileData['category'][widget.category];
     levelName = AppValues.fileData['level'][widget.level];
-    finishedImage = 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png';
-    imageName = AppValues.fileData[categoryName][levelName]['name'];
+    finishedImage = 'images/Block_Image/${widget.category + 1}. $categoryName/$levelName/complete.png';
+    imageName = AppValues.fileData['content'][widget.category][widget.level]['name'];
   }
 
   @override

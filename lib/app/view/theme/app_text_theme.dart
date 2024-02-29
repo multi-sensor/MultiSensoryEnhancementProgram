@@ -31,7 +31,7 @@ abstract class AppTextThemes {
   );
 
   static const TextStyle sliderTitleStyle = TextStyle(
-  color: AppColors.mainColor,
+  color: AppColors.black,
   fontWeight: AppFontWeights.bold,
   );
 
@@ -51,6 +51,22 @@ abstract class AppTextThemes {
   );
   static const TextStyle cookieRunWhiteStyle = TextStyle(
     fontFamily: 'CookieRun',
+    color: Colors.white,
+  );
+
+  static const TextStyle MaplestoryStyle = TextStyle(
+    fontFamily: 'Maplestory',
     color: Colors.black,
   );
+
+  static const TextStyle MaplestoryWhiteStyle = TextStyle(
+    fontFamily: 'Maplestory',
+    color: Colors.white,
+  );
+
+  static const TextStyle cookieRunOrangeStyle = TextStyle(
+    fontFamily: 'CookieRun',
+    color: AppColors.orangeColor
+  );
+
 }

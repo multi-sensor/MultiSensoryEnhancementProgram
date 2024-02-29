@@ -2,7 +2,7 @@ name: multi_sensory_enhancement_program
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.2 <4.0.0'
+  sdk: ">=3.1.2 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,6 +45,7 @@ dependencies:
   get: ^4.6.6
   carousel_slider: ^4.2.1
   photo_view: ^0.14.0
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +63,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -71,33 +71,56 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - images/01/
+    - images/Background/
+    - images/Button/
+    - images/CommonUse/
+    - images/Preview_Image/
+    - images/Button_Level/
     - images/pictograms/
-    - images/01/process/
-    - images/가전제품만들기/가전제품만들기_Lv.1/
-    - images/가전제품만들기/가전제품만들기_Lv.1+/
-    - images/가전제품만들기/가전제품만들기_Lv.2/
-    - images/가전제품만들기/가전제품만들기_Lv.2+/
-    - images/가전제품만들기/가전제품만들기_Lv.3/
-    - images/가전제품만들기/가전제품만들기_Lv.3+/
-    - images/공룡만들기/공룡만들기_Lv.1/
-    - images/공룡만들기/공룡만들기_Lv.1+/
-    - images/공룡만들기/공룡만들기_Lv.2/
-    - images/공룡만들기/공룡만들기_Lv.2+/
-    - images/공룡만들기/공룡만들기_Lv.3/
-    - images/공룡만들기/공룡만들기_Lv.3+/
-    - images/악기만들기/악기만들기_Lv.1/
-    - images/악기만들기/악기만들기_Lv.1+/
-    - images/악기만들기/악기만들기_Lv.2/
-    - images/악기만들기/악기만들기_Lv.2+/
-    - images/악기만들기/악기만들기_Lv.3/
-    - images/악기만들기/악기만들기_Lv.3+/
-    - images/집만들기/집만들기_Lv.1/
-    - images/집만들기/집만들기_Lv.1+/
-    - images/집만들기/집만들기_Lv.2/
-    - images/집만들기/집만들기_Lv.2+/
-    - images/집만들기/집만들기_Lv.3/
-    - images/집만들기/집만들기_Lv.3+/
+    - images/Title/
+    - images/Block_Image/1. 기차/lv1/
+    - images/Block_Image/1. 기차/lv1+/
+    - images/Block_Image/1. 기차/lv2/
+    - images/Block_Image/1. 기차/lv2+/
+    - images/Block_Image/1. 기차/lv3/
+    - images/Block_Image/1. 기차/lv3+/
+    - images/Block_Image/2. 집/lv1/
+    - images/Block_Image/2. 집/lv1+/
+    - images/Block_Image/2. 집/lv2/
+    - images/Block_Image/2. 집/lv2+/
+    - images/Block_Image/2. 집/lv3/
+    - images/Block_Image/2. 집/lv3+/
+    - images/Block_Image/3. 악기/lv1/
+    - images/Block_Image/3. 악기/lv1+/
+    - images/Block_Image/3. 악기/lv2/
+    - images/Block_Image/3. 악기/lv2+/
+    - images/Block_Image/3. 악기/lv3/
+    - images/Block_Image/3. 악기/lv3+/
+    - images/Block_Image/4. 가전제품/lv1/
+    - images/Block_Image/4. 가전제품/lv1+/
+    - images/Block_Image/4. 가전제품/lv2/
+    - images/Block_Image/4. 가전제품/lv2+/
+    - images/Block_Image/4. 가전제품/lv3/
+    - images/Block_Image/4. 가전제품/lv3+/
+    - images/Block_Image/5. 공룡/lv1/
+    - images/Block_Image/5. 공룡/lv1+/
+    - images/Block_Image/5. 공룡/lv2/
+    - images/Block_Image/5. 공룡/lv2+/
+    - images/Block_Image/5. 공룡/lv3/
+    - images/Block_Image/5. 공룡/lv3+/
+    - images/Block_Image/6. 곤충/lv1/
+    - images/Block_Image/6. 곤충/lv1+/
+    - images/Block_Image/6. 곤충/lv2/
+    - images/Block_Image/6. 곤충/lv2+/
+    - images/Block_Image/6. 곤충/lv3/
+    - images/Block_Image/6. 곤충/lv3+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv1/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv1+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv2/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv2+/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv3/
+    - images/Block_Image/7. 바퀴 달린 자동차/lv3+/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -12,16 +12,43 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CRMAppBar(title: 'CREAMO'),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'), // Change to your background image path
+            fit: BoxFit.cover,
+          ),
+        ),
+        padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
-            Image.asset('images/creamo_logo.png', height: 150, width: 200),
-            const SizedBox(height: 5),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50), onTap: (){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("개발 중입니다."),
+                        duration: Duration(seconds: 2), // 메시지 표시 시간 설정
+                      ),
+                    );
+                  }),
+                  Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
+                  GestureDetector(child: Image.asset('images/Button/button_back.png',  width: 50, height: 50), onTap: (){Navigator.pop(context);}),
+                ]
+            ),
+            const SizedBox(height: 20),
+            Image.asset(
+              'images/CommonUse/common_title.png', // 두 번째 이미지 파일 경로
+              height: 80,
+              fit: BoxFit.fitHeight,
+            ),
+            const SizedBox(height: 20),
+            Image.asset('images/Title/title_${AppValues.fileData['level'][level]}.png', height: 80, fit: BoxFit.fitHeight),
+            const SizedBox(height: 20),
             Expanded(child: buildImgButtonPage())
           ],
         ),
@@ -52,40 +79,11 @@ class CategoryPage extends StatelessWidget {
     String categoryName = AppValues.fileData['category'][index].toString();
     String levelName = AppValues.fileData['level'][level].toString();
     return CRMImgButton(
-      title: AppValues.fileData[categoryName][levelName]['name'].toString(),
-      imagePath: 'images/$categoryName/${categoryName}_$levelName/${categoryName}_${levelName}_완성.png',
+      title: AppValues.fileData['content'][index][level]['name'].toString(),
+      imagePath: 'images/Block_Image/${index + 1}. ${categoryName}/${levelName}/complete.png',
       imageIdx: index,
       needLevel: false,
       level: level
-    );
-  }
-
-
-  Widget ImgButtonPage() {
-    return Scrollbar(
-      child: SizedBox(
-        height: 800, // 고정 높이
-        width: 800, // 고정 너비
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1,
-          ),
-          itemCount: 6,
-          itemBuilder: (BuildContext context, int index) {
-            // 각 아이템에 대해 CRMImgButton을 반환
-            return CRMImgButton(
-              title: AppValues.fileData['categoryTitle'][index].toString(),
-              imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][index].toString()}.png',
-              imageIdx: index,
-              needLevel: false,
-              level: level
-            );
-          },
-        ),
-      ),
     );
   }
 }

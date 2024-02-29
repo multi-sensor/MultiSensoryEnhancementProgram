@@ -6,6 +6,7 @@ import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_img
 import 'package:multi_sensory_enhancement_program/app/view/common/system/crm_text_field.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_string.dart';
 import 'package:multi_sensory_enhancement_program/app/view/theme/app_values.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -18,8 +19,10 @@ class _MainPageState extends State<MainPage> {
   bool isSwitched = false;
   late ScrollController levelScrollController;
   late ScrollController imgScrollController;
-  List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
+  late TextEditingController textEditingController;
+  List<int> categoryIdxs = [for (int i = 0; i < AppValues.fileData["category"].length; i++) i];
   String searchText = "";
+  bool status = false;
 
   void toggleSwitch(bool value) {
     setState(() {
@@ -32,14 +35,17 @@ class _MainPageState extends State<MainPage> {
       imgScrollController.jumpTo(0);
     }
     searchText = "";
-    categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
+    categoryIdxs = [for (int i = 0; i < AppValues.fileData["category"].length; i++) i];
   }
+
+
 
   @override
   void initState() {
     super.initState();
-    levelScrollController = ScrollController(); // 초기화
-    imgScrollController = ScrollController(); // 초기화
+    levelScrollController = ScrollController();
+    imgScrollController = ScrollController();
+    textEditingController = TextEditingController();
   }
 
   @override
@@ -52,139 +58,161 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CRMAppBar(title: 'creamo'),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/background.png'), // Change to your background image path
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.png'), // Change to your background image path
+            fit: BoxFit.cover,
           ),
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 10),
-                Image.asset('images/creamo_logo.png', height: 150, width: 200),
-                if (!isSwitched) ...[
-                  const SizedBox(height: 10),
-                  // Use Row for horizontal arrangement
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CRMTextField(
-                        iconName: Icons.search,
-                        hintText: AppString.str_themeSearch,
-                        onChanged: _handleSearchTextChanged,
+        ),
+        padding: EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(child: Image.asset('images/Button/button_manual.png',  width: 50, height: 50), onTap: (){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("개발 중입니다."),
+                        duration: Duration(seconds: 2), // 메시지 표시 시간 설정
                       ),
-                    ],
+                    );
+                  }),
+                  Image.asset('images/creamo_logo.png',height: 30, fit:BoxFit.fitHeight),
+                  SizedBox(width: 50)
+                ]
+            ),
+            const SizedBox(height: 20),
+            Image.asset(
+              'images/CommonUse/common_title.png', // 두 번째 이미지 파일 경로
+              height: 80,
+              fit: BoxFit.fitHeight,
+            ),
+            const SizedBox(height: 10),
+            if (!isSwitched) ...[
+              const SizedBox(height: 10),
+              // Use Row for horizontal arrangement
+
+              CRMTextField(
+                  iconName: Icons.search,
+                  hintText: AppString.str_themeSearch,
+                  keyboardSubmit: _handleSearchText,
+                  controller: textEditingController
+              ),
+
+            ],
+            if (isSwitched)
+              SizedBox(height: 60),
+            const SizedBox(height: 5),
+            Expanded(
+              child: Stack(
+                children: [
+                  // buildLevelButtonPage() 또는 buildImgButtonPage()
+                  Padding(
+                    padding: EdgeInsets.only(top: 45), // Switch의 높이만큼 여백을 추가
+                    child: isSwitched ? buildLevelButtonPage() : buildImgButtonPage(),
+                  ),
+                  // CupertinoSwitch를 오른쪽 상단에 배치
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: FlutterSwitch(
+                      width: 70.0,
+                      height: 30.0,
+                      valueFontSize: 15.0,
+                      toggleSize: 25.0,
+                      value: status,
+                      borderRadius: 15.0,
+                      padding: 4.0,
+                      showOnOff: true,
+                      onToggle: (val) {
+                        setState(() {
+                          status = val;
+                          isSwitched = val; // Update isSwitched when the switch is toggled
+                          toggleSwitch(val); // Call your existing toggleSwitch method
+                        });
+                      },
+                      activeText: '레벨',
+                      inactiveText: '테마',
+                    ),
                   ),
                 ],
-                if (isSwitched)
-                  SizedBox(height: 60),
-                const SizedBox(height: 5),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 750), // 스위치 위치 조정
-                      child: CupertinoSwitch(
-                        value: isSwitched,
-                        onChanged: toggleSwitch,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    isSwitched ? buildLevelButtonPage() : buildImgButtonPage(),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget buildLevelButtonPage() {
     // Level 페이지 구성
-    return Center(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 800,
-            width: 800,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-                childAspectRatio: 1,
-              ),
-              itemCount: AppValues.fileData["levelTitle"].length,
-              itemBuilder: (context, index) {
-                return createLevelButtonData(index);
-              },
-              controller: levelScrollController, // 전달받은 컨트롤러 사용
-            ),
-          ),
-        ],
+    return SizedBox(
+      height: 800,
+      width: 800,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
+          childAspectRatio: 1,
+        ),
+        itemCount: AppValues.fileData["level"].length,
+        itemBuilder: (context, index) {
+          int newIndex = index ~/ 3 == 0? index * 2 : (index % 3) * 2 + 1;
+          return createLevelButtonData(newIndex);
+        },
+        controller: levelScrollController, // 전달받은 컨트롤러 사용
       ),
     );
   }
 
 
   Widget createLevelButtonData(index) {
-    return CRMLevelButton(title: AppValues.fileData["levelTitle"][index].toString());
+    return CRMLevelButton(
+      imagePath: 'images/Button_Level/Button_${AppValues.fileData["level"][index].toString()}.png',
+      level: index
+    );
   }
 
   Widget buildImgButtonPage() {
     // Image 페이지 구성
-    return Center(
-      child: SizedBox(
-        height: 800,
-        width: 800,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1,
-          ),
-          itemCount: categoryIdxs.length,
-          itemBuilder: (context, index) {
-            return createImgButtonData(index);
-          },
-          controller: imgScrollController, // 전달받은 컨트롤러 사용
+    return SizedBox(
+      height: 800,
+      width: 800,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
+          childAspectRatio: 1,
         ),
+        itemCount: categoryIdxs.length,
+        itemBuilder: (context, index) {
+          return createImgButtonData(index);
+        },
+        controller: imgScrollController, // 전달받은 컨트롤러 사용
       ),
     );
   }
 
   Widget createImgButtonData(index) {
     return CRMImgButton(
-      title: AppValues.fileData["categoryTitle"][categoryIdxs[index]].toString(),
+      title: AppValues.fileData["category"][categoryIdxs[index]].toString() + ' 만들기',
       imagePath: 'images/pictograms/Picto_${AppValues.fileData["pictograms"][categoryIdxs[index]].toString()}.png',
       imageIdx: categoryIdxs[index],
     );
   }
 
-  void _handleSearchTextChanged(String text) {
-    setState(() {
-      searchText = text;
-    });
-    if (searchText.isEmpty) {
-      categoryIdxs = [for (int i = 0; i < AppValues.fileData["categoryTitle"].length; i++) i];
-    } else {
-      categoryIdxs = [];
-      AppValues.fileData["categoryTitle"].asMap().forEach((index, title) {
-        if (RegExp(searchText, caseSensitive: false).hasMatch(title)) {
-          categoryIdxs.add(index);
-        }
-      });
-    }
+  void _handleSearchText(String text) {
+    Navigator.pushNamed(
+      context,
+      '/category_search',
+      arguments: {'searchText': text},
+    );
   }
 }
